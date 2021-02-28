@@ -1,2 +1,5 @@
 # WockyStonk
 ---
+
+Contributors: 
+* Jonathan Phouminh
