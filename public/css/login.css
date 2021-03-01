@@ -3,19 +3,285 @@
     Date: February 28th, 2021
 */
 
-
-
-/* Tag Selectors */
-body {
+/******ATTRIBUTES******/
+.darkBlue {
     background-color: #3B5284;
 }
 
+.grey {
+    background-color:#C4C4C4;
+}
 
+.rounded {
+    border-radius: 49px;
+}
 
-/* Class Selectors */
-.green {
+.circle {
+    border-radius: 100%;
+    height: 40%;
+    width: 40%;
+}
 
+.input-text {
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 45px;
+
+    color: #FFFFFF;
 }
 
 
-/* idSelectors */
+
+
+/******BACKGROUND-GIF********/
+.imagePlaceholder {
+    position:absolute; 
+    width: 100%;
+    height: 70%;
+    left: 0px;
+    right: 0px;
+    top: 13%;
+    z-index: -1;  /* always behind */
+
+    background: #C4C4C4;
+}
+
+
+/******ICON CONTAINER********/
+.iconCollectionContainer {
+    /* Containers position */
+    position: absolute;
+
+
+    /* Sizing */
+    width: 50%;
+    height: 80%; 
+
+    /* Flex Options */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* constraints, relative to imagePlaceholder */
+    left: 2.5%;
+    top : 8%;
+    bottom : 8%;
+}
+.tl { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 50%; 
+    bottom: 50%; 
+
+    
+}
+.tr { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute; 
+    top: 0;
+    left: 50%;
+    right: 0; 
+    bottom: 50%; 
+
+}
+.bl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    right: 50%;
+    bottom: 0; 
+
+
+}
+.br {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0; 
+}
+
+
+.iconCell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2em;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/******LOGIN CONTAINER********/
+.loginContainer {
+     /* Containers position */
+     position: absolute;
+     background: #5BA8A0;
+
+ 
+     /* Sizing */
+     width: 40%;
+     height: 80%; 
+ 
+     /* Flex Options */
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ 
+     /* constraints, relative to imagePlaceholder */
+     right: 2.5%;
+     top : 8%;
+     bottom : 8%;
+     
+}
+
+.box1 {
+    /* background-color: red; */
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    height: 31.9999%;
+    width: 95%;
+}
+
+.title {
+    /* Text Styling */
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 4vh;
+    line-height: 1.6;
+    text-align: center;
+
+    color: black;
+}
+
+
+
+.box2 {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 31.9999%;
+    width: 95%;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+
+    height: 90% ;
+    width: 100% ;
+}
+
+.labelContainer {
+    color: black;
+    font-size: 3vh;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+
+
+    width: 30%;
+    height: 100%;
+}
+
+.textFieldContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 70%;
+    height: 100%;
+}
+
+input[type="email"], input[type="password"]  {
+    
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3vh;
+
+    width: 90%;
+    height: 20%;
+}
+
+
+
+.box3 {
+    /* background-color: red; */
+
+    display: flex;
+    justify-content: flex-end; 
+
+    height: 31.9999%;
+    width: 95%;
+}
+
+.submitButton {
+    position: absolute;
+    background-color: azure;
+    border: 0px;
+
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+
+    right: 5rem;
+
+    height: 5%;
+    width: 20%;
+}
+
+
+
+
+
+
+
