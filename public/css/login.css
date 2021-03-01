@@ -2,7 +2,14 @@
     AUTHOR: Jonathan Phouminh
     Date: February 28th, 2021
 */
+form{
+    margin:0;
+    padding:0;
+    display:block;
 
+    width: 100%;
+    height: 50%;
+}
 /******ATTRIBUTES******/
 .darkBlue {
     background-color: #3B5284;
@@ -133,15 +140,6 @@
     font-size: 2em;
     color: white;
 }
-
-
-
-
-
-
-
-
-
 
 
 

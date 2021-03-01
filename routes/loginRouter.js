@@ -8,19 +8,25 @@ const router = express.Router();
 
 // This gets called anytime a request is made to this route
 router.use(function timeLog (req, res, next) {
-    console.log(K.port)
-    console.log('Time: ', Date.now());
     next();
 })
 
 router.route('/')
     .get(function (req, res){
-        console.log("get")
         res.render('login.ejs');
     })
     .post(function (req,res) {
-        console.log("POST RECEIVED FROM LOGIN");
-        res.send('success');
+        
+        const email = req.body.email;
+        const pass = req.body.password;
+
+        
+        // need to add a authentication part, where we decide if we send them here 
+        // probably gonna involve database
+
+
+        // figure out how to pass arguments here to the dashboard
+        res.redirect('/dashboard');
     });
 
 module.exports = router; 
