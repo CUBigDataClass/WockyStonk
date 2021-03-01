@@ -14,7 +14,6 @@ app.set('view engine', 'ejs');
 
 // call dbSetup methods 
 
-
 /* GET REQUESTS */
 app.get('/', (req, res) => {
     res.render('login.ejs');

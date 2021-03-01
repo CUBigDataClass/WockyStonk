@@ -7,16 +7,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
     <title>WockyStocks Login</title>
 </head>
-<body>
+<body class="darkBlue">
     
-    <h1> LOGIN PAGE </h1>
+    <img class="imagePlaceholder" src="" alt="">
 
-    <!-- Set up form -->
-    <form action="/" method="post">
-        <input type="text">
-        <button type="submit">Log Me In</button>
-    </form>
+    <!-- Login Container -->
+    <div class="signInContainer rounded">
+
+        <span class="logo-text"> Wocky Stocks </span>
+
+        <div>
+            <section class="inputContainer">
+                <label for="email" class="input-text ">Email:</label>
+                <input type="email" name="email" class="rounded">
+            </section>
+            <section class="inputContainer">
+                <label for="password" class="input-text">Password: </label>
+                <input type="password" name="password" class="rounded"> 
+            </section>
+        </div>
+
+        <button type="submit" class="submitButton rounded">Login</button>
+            
+    </div>
 </body>
+
+<!-- Add ticker footer here -->
 </html>
