@@ -1,0 +1,128 @@
+body{
+    background-color: #3B5284;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 10vh;
+}
+
+.header .sideBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 10%;
+}
+
+
+.header img{
+    position: relative;
+    left: 5vw;
+    border-radius: 50%;
+    height: 35%;
+    width: 35%; 
+    z-index: 99999999999999999;
+}
+
+.header .search{
+    display: flex;
+    width: 45%;
+    height: 100%;
+    justify-content: center;
+}
+.search input{
+    width: 75%;
+    text-align:left;
+    background-color: black;
+    color: white;
+    border-radius: 2rem;
+    font-size: 1.25rem;
+}
+.header .title{
+    display: flex;
+    justify-content: center;
+    width: 45%;
+    font-size: 2rem;
+}
+
+
+
+.body-content{
+    display: flex;
+    justify-content: space-evenly;
+    min-height: 60vh;
+    width:100%;
+}
+
+.body-content .visuals{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width:45%;
+}
+
+.body-content .graph{
+    background-color: #C4C4C4;
+    height: 100%;
+}
+
+
+.body-content .socialFeeds{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:45%
+}
+.body-content .socialFeeds section{
+    display: flex;
+    height: 45%;
+    width: 90%;
+    background-color: #C4C4C4;
+}
+
+.selectors{
+    display: flex;
+    width: 100%;
+    min-height: 15vh;
+    align-items: center;
+}
+
+.selectors .buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+
+/* For the side drop out menu */
+.header span{
+    cursor: pointer;
+}
+
+.dropDown{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    /* z-index: 1; */
+    top: 0;
+    right: 0;
+    background-color: grey;
+    overflow-x:hidden;
+    transition-duration: 0.5s;
+}
+
+.dropDown .stonk{
+    background-color: blue;
+    height: 5vh;
+}
+.dropDown .filler{
+    background-color: grey;
+    height: 15vh;
+}
+
+
