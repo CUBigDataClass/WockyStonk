@@ -8,8 +8,6 @@ const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
 const sql = require(__dirname + '/database/db-handler.js');
 
-/* need to make sure this connection happens first */
-/* Export this reference to any other file that needs it */
 sql.connection; 
 
 // Router Modules
@@ -48,5 +46,7 @@ app.listen(K.port, () => {
     console.log(`Server started on port: ${K.port}`);
 });
 
-/* Export after connection is established */
+
+
+/* Export after connection is established so other files can have reference to it */
 module.exports.sql = sql; 
