@@ -33,6 +33,14 @@ app.get('/logout', (req,res) => {
     sql.killConnection(); 
 })
 
+
+/* Use this get route to test the db for now, just type it in the url */
+/* sql is the reference to the db handler */
+app.get('/testDB', (req, res) => {
+
+    res.send("/testDB");
+});
+
 // POST REQUESTS
 app.post('/register', (req, res) => {
     console.log('POST: /register');
