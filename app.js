@@ -9,25 +9,13 @@ const bodyParser = require('body-parser');
 // app.use(bodyParser.json()); // Support json encoded bodies
 // app.use(bodyParser.urlencoded({extended: true})); // Support encoded bodies
 
-// Create Database Connection
-var mysql = require('mysql');
 
-/*
-Database Connection Info
-host: Defines ip address of server hosting database
-user: RDS username
-password: RDS username
-port: Port to communicate with database
-*/
-var connection = mysql.createConnection({
-    host: process.env.RDS_HOSTNAME,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT
-});
 
 // Router Modules
 const login = require(__dirname + '/routes/loginRouter.js')
+
+// db delegate 
+const db; 
 
 const app = express(); 
 app.use(express.static('public'));
@@ -37,6 +25,7 @@ app.set('view engine', 'ejs');
 app.use('/', login);
 
 // LOG SUCCESS/ERROR FOR DB CONNECTION
+// use the reference 
 connection.connect(function(err){
     if(err){
         console.error('Database connection failed: ' + err.stack);
