@@ -4,16 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="icon" href="https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615161600&Signature=WtR8enfwASRmrdHL11TH1unEP0Fw8H7uYQae4hJ5TUj2obAP7QFrFYQVA8rgJoOmcqx6pKq59AMjdla0oYciTJI~8wlG7Wg4Pnvl3J568LPqZTcYcGMgr7C4KEZ1dGHsnnyUY9N32abHtdFQNpj20vm9kgwxsSn3TDsUHWirMOwtmkGT~CeKDHvuCcWSZVDDxWQLrY05QzSTAcG15T7ZLpmdr46NjqC7rB2vZJCkYXxDZa9xxHVr6TaPVxIVXy16yrzcZcAXnMuMr2U9099EPY9qB1YP-OhBWHaDNH3LqAlQTVOkcCmhRajdoGMiY0LvnChp~rJ~4c0q~9Y6ypvZog__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
     <title>WockyStocks Registration</title>
 </head>
-<body>
-    <h1> REGISTER PAGE </h1>
+<body class="darkBlue">
     
-    <form action="/register" method="post">
-        <input type="text" name="email">
-        <input type="text" name="password">
-        <button type="submit">Sign Me Up!</button>
+    <img class="imagePlaceholder" src="https://media3.giphy.com/media/5T0jY5SzGP9Z72L2AN/giphy.gif" alt="animatedgif">
+
+
+    <div class="registerContainer rounded">
+
+        <section class="box1 title">
+            <h1 class="logo-text"> Register </h1> 
+        </section>
+
+        <h3 class="logo-text">Required field (*)</h3>
+
+        <form action="/register" method="post">
+            <section class="box2">
+                <div class=inputContainer>
+                    <section class="labelContainer">
+                        <label for="email" class=" label ">(*)Email:</label>
+                        <label for="password" class=" ">(*)Password: </label>
+                    </section>
+                    
+                    <section class="textFieldContainer">
+                        <input type="email" name="email" >
+                        <input type="password" name="password"> 
+                    </section>
+                </div>
+            </section>
+
+            <section class="box3">
+                <button class="submitButton" type="submit">Sign Me</button>
+            </section>
     </form>
-    
+    </div>
 </body>
 </html>
