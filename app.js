@@ -12,19 +12,20 @@ sql.connection;
 
 // Router Modules
 const login = require(__dirname + '/routes/loginRouter.js');
-
+const register = require(__dirname + '/routes/registerRouter.js');
 
 const app = express(); 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', login);
+app.use('/register',register)
 app.set('view engine', 'ejs');
 
 
 // GET REQUESTS
-app.get('/register', (req, res) => {
-    res.render('register.ejs');
-});
+// app.get('/register', (req, res) => {
+//     res.render('register.ejs');
+// });
 app.get('/dashboard', (req, res) => {
     res.render('dashboard.ejs');
 });
@@ -42,9 +43,9 @@ app.get('/testDB', (req, res) => {
 });
 
 // POST REQUESTS
-app.post('/register', (req, res) => {
-    console.log('POST: /register');
-});
+// app.post('/register', (req, res) => {
+//     console.log('POST: /register');
+// });
 app.post('/dashboard', (req, res) => {
     console.log('POST: /dashboard');
 });
