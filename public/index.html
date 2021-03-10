@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY REACT PROJECT</title>
-</head>
-<body>
-    <h1> YOU DID IT </h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Favicon goes here -->
+    <title>WockStocks Login</title>
+  </head>
+
+  <body class="darkBlue">
+    <!-- Background Overlays -->
+    <div id="loginContainer"></div>
+    <img
+      class="imagePlaceholder"
+      src="https://media3.giphy.com/media/5T0jY5SzGP9Z72L2AN/giphy.gif"
+      alt="animatedgif"
+    />
+
+    <!-- Icon Collection -->
+    <div class="iconCollectionContainer">
+      <div class="tl iconCell">
+        <img
+          class="circle"
+          src="
+            https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615766400&Signature=NBpvoFmN-6jLxMQ9MsklwHkVd1CZOifOuNrAtfIiUlYBG7HGS3gR-y10biJNo4QgnowxqzCFvQCfRB4ds5qddXkcLVwLAY4~VKd9zKACfEkvfD5QX0fBdwFvtoRy86n85GmKXlkaAmn150je8Y~IgrzzkJVRo6D7oRsMmsDcoEtoEsV~8F-5puzizzniVA3qgbnT92RE~sltXQkKRS1jXaHfQ8ThI3FnTsDOMjnhPDbz~yM1LF72WEfDkJl0CoDSreYt0uvOSgXbhAyzK3kWEbYCULEvRjcZA6OspVHsBGgwKMj12-i6P5i2YFFjfkTy~tPHOJXVD9f0-EQ0BMxiyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA
+            "
+          alt="andyHead"
+        />
+
+        <span>Time Range</span>
+      </div>
+      <div class="tr iconCell">
+        <img
+          class="circle"
+          src="
+            https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615766400&Signature=NBpvoFmN-6jLxMQ9MsklwHkVd1CZOifOuNrAtfIiUlYBG7HGS3gR-y10biJNo4QgnowxqzCFvQCfRB4ds5qddXkcLVwLAY4~VKd9zKACfEkvfD5QX0fBdwFvtoRy86n85GmKXlkaAmn150je8Y~IgrzzkJVRo6D7oRsMmsDcoEtoEsV~8F-5puzizzniVA3qgbnT92RE~sltXQkKRS1jXaHfQ8ThI3FnTsDOMjnhPDbz~yM1LF72WEfDkJl0CoDSreYt0uvOSgXbhAyzK3kWEbYCULEvRjcZA6OspVHsBGgwKMj12-i6P5i2YFFjfkTy~tPHOJXVD9f0-EQ0BMxiyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA
+            "
+          alt="andyHead"
+        />
+        <span>Time Range</span>
+      </div>
+      <div class="bl iconCell">
+        <img
+          class="circle"
+          src="
+            https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615766400&Signature=NBpvoFmN-6jLxMQ9MsklwHkVd1CZOifOuNrAtfIiUlYBG7HGS3gR-y10biJNo4QgnowxqzCFvQCfRB4ds5qddXkcLVwLAY4~VKd9zKACfEkvfD5QX0fBdwFvtoRy86n85GmKXlkaAmn150je8Y~IgrzzkJVRo6D7oRsMmsDcoEtoEsV~8F-5puzizzniVA3qgbnT92RE~sltXQkKRS1jXaHfQ8ThI3FnTsDOMjnhPDbz~yM1LF72WEfDkJl0CoDSreYt0uvOSgXbhAyzK3kWEbYCULEvRjcZA6OspVHsBGgwKMj12-i6P5i2YFFjfkTy~tPHOJXVD9f0-EQ0BMxiyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA
+            "
+          alt="andyHead"
+        />
+        <span>Time Range</span>
+      </div>
+      <div class="br iconCell">
+        <img
+          class="circle"
+          src="
+            https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615766400&Signature=NBpvoFmN-6jLxMQ9MsklwHkVd1CZOifOuNrAtfIiUlYBG7HGS3gR-y10biJNo4QgnowxqzCFvQCfRB4ds5qddXkcLVwLAY4~VKd9zKACfEkvfD5QX0fBdwFvtoRy86n85GmKXlkaAmn150je8Y~IgrzzkJVRo6D7oRsMmsDcoEtoEsV~8F-5puzizzniVA3qgbnT92RE~sltXQkKRS1jXaHfQ8ThI3FnTsDOMjnhPDbz~yM1LF72WEfDkJl0CoDSreYt0uvOSgXbhAyzK3kWEbYCULEvRjcZA6OspVHsBGgwKMj12-i6P5i2YFFjfkTy~tPHOJXVD9f0-EQ0BMxiyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA
+            "
+          alt="andyHead"
+        />
+        <span>Time Range</span>
+      </div>
+    </div>
+
+    <!-- Login Form Container -->
+    <div id="root" class="loginContainer rounded"></div>
+  </body>
 </html>
