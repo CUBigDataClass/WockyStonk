@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Login.css";
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
-// Link component from react-router-dom
+import {Link} from "react-router-dom"; 
 
 class Login extends React.Component {
   constructor(props) {
@@ -67,12 +67,16 @@ class Login extends React.Component {
             keystroke={this.handleKeyStroke}
           />
         </section>
-        <section id="ButtonSection" class="box3">
+        <section id="ButtonSection" class="box3"> 
+
+
+          <Link to={'/register'}>
           <SubmitButton
             text="Register"
             clName="submitRegister"
             submit={this.handleRegister}
           />
+          </Link>
           <SubmitButton
             text="Submit"
             clName="submitButton"
