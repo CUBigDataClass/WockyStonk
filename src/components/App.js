@@ -1,15 +1,10 @@
-import Login from './Login'; 
-import About from './About';
-import Nav from './Nav';
-import Shop from './Shop'; 
-
+import Login from './Login/Login'; 
+import DashBoard from './Dashboard/Dashboard';
 
 function App() {
   return (
     <div> 
-      <Nav /> 
-      <About /> 
-      <Shop />
+      <Login /> 
     </div> 
   );
 }

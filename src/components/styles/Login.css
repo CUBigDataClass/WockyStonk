@@ -266,4 +266,23 @@
     height: 5%;
     width: 20%;
   }
+
+  .submitRegister {
+    position: absolute;
+    background-color: azure;
+    border: 0px;
+  
+    vertical-align: baseline;
+    text-align: center;
+  
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+  
+    right: 30%;
+  
+    height: 5%;
+    width: 20%;
+  }
   

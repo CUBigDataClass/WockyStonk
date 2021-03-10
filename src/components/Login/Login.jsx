@@ -1,9 +1,8 @@
 import React from "react";
-import "./styles/Login.css";
+import "../styles/Login.css";
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
-
-/* This will all sit inside the predefined login container  */
+// Link component from react-router-dom
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,12 +22,16 @@ class Login extends React.Component {
     };
   }
 
-  // figure out how to redirect this to express route
+  // post this data through react-router-dom node js router to do the verification 
+  // not sure if nodejs can call react-router-links
+  // For now the button will just call the link to the dashboard
   handleSubmit() {
-    // should be set at this point
     console.log(this.state.email);
-    // should be set at this point
-    console.log(this.state.password);
+    console.log(this.state.password);  
+  }
+
+  handleRegister() {
+    console.log("register button tapped");
   }
 
   // updates the state vars for password and username everytime its called
@@ -65,6 +68,11 @@ class Login extends React.Component {
           />
         </section>
         <section id="ButtonSection" class="box3">
+          <SubmitButton
+            text="Register"
+            clName="submitRegister"
+            submit={this.handleRegister}
+          />
           <SubmitButton
             text="Submit"
             clName="submitButton"
