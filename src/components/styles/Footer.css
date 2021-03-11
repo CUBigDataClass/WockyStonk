@@ -3,17 +3,14 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
 
     overflow: scroll;
   
-    height: 10%;
-    width: 100%;
     left: 0px;
     right: 0px;
     bottom: 0px;
-
-    
+    height: 5.5%;
+    width: 100%;
   }
   
   /****Ticker Box Styling*****/
@@ -23,25 +20,37 @@
     justify-content: space-between;
     flex-direction: column;
   
-    width: 33%;
+    width: 33.99999%;
+    height: 100%;
+
+    overflow: scroll;
+  }
+  
+  .description{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: baseline;
+    
+    top: 0px;
+    bottom: 10px;
     height: 100%;
   }
   
-  .title {
+  .titlePosition {
+    /* background-color: red; */
     color: black;
-    
-    
-  
-    align-self: flex-start;
-    justify-content: center;
+
+    text-align: flex-start;
     
     top: 0px;
     right: 0px;
     left: 0px;
-    height: 25%;
+    height: 0%;
+    width: 100%; 
   }
   
-  .input-text {
+  .text-style {
     font-family: Garamond;
     font-style: normal;
     font-weight: bold;
@@ -54,20 +63,6 @@
     font-style: normal;
     font-weight: normal;
     font-size: 1em;
-  
     color: white;
-  }
-  
-  .description {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    
-  
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    height: 70%;
   }
   

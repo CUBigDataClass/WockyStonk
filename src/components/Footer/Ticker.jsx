@@ -13,7 +13,7 @@ class Ticker extends React.Component {
   render() {
     return (
       <div className="box input-text;">
-        <span className="title input-text"> {this.props.label} </span>
+        <section className="titlePosition text-style"> {this.props.label} </section>
         <section className="description">
           <span className="index"> {this.props.index} </span>
           <span
