@@ -18,7 +18,7 @@ class Ticker extends React.Component {
           <span className="index"> {this.props.index} </span>
           <span
             style={
-              this.state.increase ? { color: "greenyellow" } : { color: "red" }
+              this.state.increase ? { color: "#00FF00" } : { color: "red" }
             }
           >
             {this.props.change}%{" "}

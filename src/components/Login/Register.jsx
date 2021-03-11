@@ -4,6 +4,7 @@ import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
+import Footer from '../Footer/Footer'
 import {Link} from "react-router-dom"; 
 
 class Register extends React.Component {
@@ -45,7 +46,7 @@ class Register extends React.Component {
         <Grid /> 
         <div className="loginContainer rounded">
           <div className="innerLoginContainer rounded">
-              <section id="TitleSection " class="box1 title">
+              <section id="TitleSection " class="box1 titleLogo">
                 Create Account
               </section>
               <section class="box2">
@@ -71,6 +72,7 @@ class Register extends React.Component {
               </section>
             </div>
             </div>
+            <Footer /> 
       </div>
     );
   }

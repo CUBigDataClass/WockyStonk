@@ -5,7 +5,7 @@ import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
-import {Link} from "react-router-dom"; 
+import {Link, useHistory } from "react-router-dom"; 
 
 class Login extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class Login extends React.Component {
 
   handleSubmit() {
     console.log(this.state.email);
-    console.log(this.state.password);  
+    console.log(this.state.password);      
   }
 
   handleRegister() {
@@ -73,11 +73,13 @@ class Login extends React.Component {
                   submit={this.handleRegister}
                 />
                 </Link>
+                <Link to={'/dashboard'}> 
                 <SubmitButton
                   text="Submit"
                   clName="submitButton"
                   submit={this.handleSubmit}
                 />
+                </Link> 
               </section>
             </div>
             </div>
