@@ -1,0 +1,73 @@
+/*****Footer Box Styling*******/
+.footer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    overflow: scroll;
+  
+    height: 10%;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    
+  }
+  
+  /****Ticker Box Styling*****/
+  .box {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  
+    width: 33%;
+    height: 100%;
+  }
+  
+  .title {
+    color: black;
+    
+    
+  
+    align-self: flex-start;
+    justify-content: center;
+    
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 25%;
+  }
+  
+  .input-text {
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    color: #c4c4c4;
+  }
+  
+  .index {
+    font-family: Garamond;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+  
+    color: white;
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    
+  
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 70%;
+  }
+  
