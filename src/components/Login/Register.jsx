@@ -6,7 +6,7 @@ import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import {Link} from "react-router-dom"; 
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,10 +22,6 @@ class Login extends React.Component {
   handleSubmit() {
     console.log(this.state.email);
     console.log(this.state.password);  
-  }
-
-  handleRegister() {
-    console.log("register button tapped");
   }
 
   handleKeyStroke(event) {
@@ -50,7 +46,7 @@ class Login extends React.Component {
         <div className="loginContainer rounded">
           <div className="innerLoginContainer rounded">
               <section id="TitleSection " class="box1 title">
-                Wocky Stonks
+                Create Account
               </section>
               <section class="box2">
                 <TextInput
@@ -66,14 +62,9 @@ class Login extends React.Component {
               </section>
               <section id="ButtonSection" class="box3"> 
               <Link to={'/register'}>
-                <SubmitButton
-                  text="Register"
-                  clName="submitRegister"
-                  submit={this.handleRegister}
-                />
                 </Link>
                 <SubmitButton
-                  text="Submit"
+                  text="Sign Me Up"
                   clName="submitButton"
                   submit={this.handleSubmit}
                 />
@@ -85,4 +76,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Register;
