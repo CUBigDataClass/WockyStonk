@@ -84,3 +84,6 @@ function Login(props) {
 }
 
 export default Login;
+
+//- Link to how to fetch express server requests 
+//https://stackoverflow.com/questions/46867494/%C3%97-react-fetch-wont-hit-index-route-in-express-router
