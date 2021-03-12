@@ -4,7 +4,7 @@ import DashBoard from './Dashboard/Dashboard';
 import './styles/Login.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
+function Entry() {
   return (
     <Router> 
       <div> 
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default Entry;
