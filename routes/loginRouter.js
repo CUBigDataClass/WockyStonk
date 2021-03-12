@@ -13,6 +13,7 @@ router.use(function timeLog (req, res, next) {
 
 router.route('/')
     .get(function (req, res){ 
+        console.log("got here")
         res.send("Forward Login Data here");
     })
     .post(function (req,res) {
