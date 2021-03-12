@@ -1,81 +1,87 @@
-import React from "react";
+import React,{useState} from "react";
 import "../styles/Login.css";
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
-import {Link} from "react-router-dom"; 
+import {Link, useHistory } from "react-router-dom"; 
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
+function Login(props) {
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyStroke = this.handleKeyStroke.bind(this);
+  // state vars
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: ""
+  });
 
-    this.state = {
-      email: "",
-      password: ""
-    };
+  const history = useHistory();
+
+  //- INSERT USER INTO DB HERE 
+  function handleSubmit() {
+    // if in system then return 
+
+    // create account, then push them to the dashboard with their basic information 
+    console.log(credentials);
+    history.push('/dashboard', {creds: credentials});
   }
 
-  handleSubmit() {
-    console.log(this.state.email);
-    console.log(this.state.password);  
-  }
-
-  handleKeyStroke(event) {
+  function handleKeyStroke(event) {
     const loc = event.target.type;
+    const value = event.target.value; 
 
+    console.log(value);
+    console.log(loc);
     if (loc === "email") {
-      this.setState({
-        email: event.target.value
+      setCredentials( (prev) => {
+        return {
+          email: value, 
+          password: prev.password
+        }
       });
     } else {
-      this.setState({
-        password: event.target.value
+      setCredentials( (prev) => {
+        return {
+          email: prev.email, 
+          password: value
+        }
       });
     }
   }
 
-  render() {
-    return (
-      <div>
-        <BackgroundOverlay />
-        <Grid /> 
-        <div className="loginContainer rounded">
-          <div className="innerLoginContainer rounded">
-              <section id="TitleSection " class="box1 titleLogo">
-                Create Account
-              </section>
-              <section class="box2">
-                <TextInput
-                  type="email"
-                  placeholder="Enter Email"
-                  keystroke={this.handleKeyStroke}
-                />
-                <TextInput
-                  type="password"
-                  placeholder="Enter Password"
-                  keystroke={this.handleKeyStroke}
-                />
-              </section>
-              <section id="ButtonSection" class="box3"> 
-              <Link to={'/register'}>
-                </Link>
-                <SubmitButton
-                  text="Sign Me Up"
-                  clName="submitButton"
-                  submit={this.handleSubmit}
-                />
-              </section>
-            </div>
-            </div>
-            <Footer /> 
+  return (
+    <div>
+      <BackgroundOverlay />
+      <Grid />
+      <div className="loginContainer rounded">
+        <div className="innerLoginContainer rounded">
+          <section id="TitleSection " class="box1 titleLogo">
+            Wocky Stonks
+          </section>
+          <section class="box2">
+            <TextInput
+              type="email"
+              placeholder="Enter Email"
+              keystroke={handleKeyStroke}
+            />
+            <TextInput
+              type="password"
+              placeholder="Enter Password"
+              keystroke={handleKeyStroke}
+            />
+          </section>
+          <section id="ButtonSection" class="box3">
+            <SubmitButton
+              text="Sign Me up"
+              clName="submitButton"
+              submit={handleSubmit}
+            />
+          </section>
+        </div>
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
-export default Register;
+export default Login;

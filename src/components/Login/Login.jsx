@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import "../styles/Login.css";
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
@@ -7,86 +7,80 @@ import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
 import {Link, useHistory } from "react-router-dom"; 
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
+function Login(props) {
+  // state vars
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: ""
+  });
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyStroke = this.handleKeyStroke.bind(this);
+  const history = useHistory();
 
-    this.state = {
-      email: "",
-      password: ""
-    };
+  //- PLACE AUTHENTICATION CODE IN HERE 
+  function handleSubmit() {
+    history.push('/dashboard', {creds: credentials});
   }
 
-  handleSubmit() {
-    console.log(this.state.email);
-    console.log(this.state.password);      
-  }
-
-  handleRegister() {
-    console.log("register button tapped");
-  }
-
-  handleKeyStroke(event) {
+  function handleKeyStroke(event) {
     const loc = event.target.type;
+    const value = event.target.value; 
 
     if (loc === "email") {
-      this.setState({
-        email: event.target.value
+      setCredentials( (prev) => {
+        return {
+          email: value, 
+          password: prev.password
+        }
       });
     } else {
-      this.setState({
-        password: event.target.value
+      setCredentials( (prev) => {
+        return {
+          email: prev.email, 
+          password: value
+        }
       });
     }
   }
 
-  render() {
-    return (
-      <div>
-        <BackgroundOverlay />
-        <Grid /> 
-        <div className="loginContainer rounded">
-          <div className="innerLoginContainer rounded">
-              <section id="TitleSection " class="box1 titleLogo">
-                Wocky Stonks
-              </section>
-              <section class="box2">
-                <TextInput
-                  type="email"
-                  placeholder="Enter Email"
-                  keystroke={this.handleKeyStroke}
-                />
-                <TextInput
-                  type="password"
-                  placeholder="Enter Password"
-                  keystroke={this.handleKeyStroke}
-                />
-              </section>
-              <section id="ButtonSection" class="box3"> 
-              <Link to={'/register'}>
-                <SubmitButton
-                  text="Register"
-                  clName="submitRegister"
-                  submit={this.handleRegister}
-                />
-                </Link>
-                <Link to={'/dashboard'}> 
-                <SubmitButton
-                  text="Submit"
-                  clName="submitButton"
-                  submit={this.handleSubmit}
-                />
-                </Link> 
-              </section>
-            </div>
-            </div>
-            <Footer /> 
+  return (
+    <div>
+      <BackgroundOverlay />
+      <Grid />
+      <div className="loginContainer rounded">
+        <div className="innerLoginContainer rounded">
+          <section id="TitleSection " class="box1 titleLogo">
+            Wocky Stonks
+          </section>
+          <section class="box2">
+            <TextInput
+              type="email"
+              placeholder="Enter Email"
+              keystroke={handleKeyStroke}
+            />
+            <TextInput
+              type="password"
+              placeholder="Enter Password"
+              keystroke={handleKeyStroke}
+            />
+          </section>
+          <section id="ButtonSection" class="box3">
+            <Link to={"/register"}>
+              <SubmitButton
+                text="Register"
+                clName="submitRegister"
+              />
+            </Link>
+            <SubmitButton
+              text="Submit"
+              clName="submitButton"
+              submit={handleSubmit}
+            />
+          </section>
+        </div>
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
 export default Login;
