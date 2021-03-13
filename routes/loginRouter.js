@@ -11,26 +11,21 @@ router.use(function timeLog (req, res, next) {
     next();
 })
 
+
+//- Make sure you are recieving the data here 
 router.route('/')
-    .get(function (req, res){ 
-        let found = false;
-
-        //- Need to query db here then return a boolean to client 
-
-        res.send({
-            foundUser: found
-        });
-    })
     .post(function (req,res) {
-        
-        console.log("post request receive at " + __dirname);
-        const email = req.body.email;
-        const pass = req.body.password;
+        let found = false;
+        const sentEmail = req.body.credentials.email; 
+        const sentPassword = req.body.credentials.password;
+
+        console.log(sentEmail);
+        console.log(sentPassword);
                 
         //- Implement Database Authentication here 
-
-        //- Pass data back to react server 
-        res.send("LOGIN POST");
+        
+        //- Let client know if user was found or not
+        res.send({isUser: found});
     });
 
 module.exports = router; 

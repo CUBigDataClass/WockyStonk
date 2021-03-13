@@ -18,19 +18,30 @@ function Login(props) {
 
   const history = useHistory();
 
-  //- PLACE AUTHENTICATION CODE IN HERE 
-  function handleSubmit() {
+  let axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+    }
+  };
+
+  //- Basic Authentication: Will route if back-end tells us if they are in
+  function handleSubmit(event) {
+    event.preventDefault();
+
     axios
-      .get("http://localhost:3030/")
+      .post("http://localhost:3030/", {credentials}, axiosConfig)
       .then((res) => {
-        let found = (res.data.foundUser)
-        
+        let found = res.data.isUser; 
+        console.log(found);
+
+        //- Hit the DB here and check for a valid return 
+
         if (found) {
           history.push('/dashboard', {creds: credentials});
         } else{
           console.log("USER NOT IN OUR SYSTEM");
         }
-        
       })
       .catch((err) => {
         console.log(err);

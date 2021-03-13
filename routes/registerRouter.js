@@ -13,16 +13,17 @@ router.use(function timeLog (req, res, next) {
 
 router.route('/')
     .post(function (req,res) {
-        
-        const email = req.body.email;
-        const pass = req.body.password;
+        let didRegister = false;
+        const newEmail = req.body.email;
+        const newPassword = req.body.password;
 
-        
+        console.log(newEmail);
+        console.log(newPassword);
+
         //- Inject users into the database here
 
-
-        //- Send Users to the dash board page on success 
-        res.send("REGISTER POST");
+        //- let client know if registration was successful
+        res.send({success: didRegister});
     });
 
 module.exports = router; 

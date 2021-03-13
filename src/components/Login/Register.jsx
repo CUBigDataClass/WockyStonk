@@ -1,11 +1,12 @@
 import React,{useState} from "react";
 import "../styles/Login.css";
+import axios from 'axios';
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
-import {Link, useHistory } from "react-router-dom"; 
+import { useHistory } from "react-router-dom"; 
 
 function Login(props) {
 
@@ -18,20 +19,34 @@ function Login(props) {
   const history = useHistory();
 
   //- INSERT USER INTO DB HERE 
-  function handleSubmit() {
-    // if in system then return 
+  function handleSubmit(event) {
+    event.preventDefault();
 
-    // create account, then push them to the dashboard with their basic information 
-    console.log(credentials);
-    history.push('/dashboard', {creds: credentials});
+    axios
+      .post("http://localhost:3030/register", {credentials})
+      .then((res) => {
+        let success = res.data.success; 
+        console.log(success);
+
+        //- Query db here for name, check for valid return
+
+        //- If db insertion was successful then push them to dashboard
+        if (success) {
+          history.push('/dashboard', {creds: credentials});
+        } else{
+          console.log("Registration FAILED");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleKeyStroke(event) {
     const loc = event.target.type;
     const value = event.target.value; 
 
-    console.log(value);
-    console.log(loc);
+
     if (loc === "email") {
       setCredentials( (prev) => {
         return {
@@ -72,7 +87,7 @@ function Login(props) {
           </section>
           <section id="ButtonSection" className="box3">
             <SubmitButton
-              text="Sign up"
+              text="Sign Me up"
               clName="submitButton"
               submit={handleSubmit}
             />
@@ -87,4 +102,5 @@ function Login(props) {
 export default Login;
 
 
-
+//- Link to how to fetch express server
+//https://stackoverflow.com/questions/46867494/%C3%97-react-fetch-wont-hit-index-route-in-express-router

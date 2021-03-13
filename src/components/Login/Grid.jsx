@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 // Renders 2 x 2 grid on login page and register page 
 class Grid extends React.Component {
