@@ -5,25 +5,27 @@ require('dotenv').config();
 const K = require(__dirname + "/K.js");
 const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
-const sql = require(__dirname + '/database/db-handler.js');
 const cors = require('cors');
 
-sql.connection; 
+const sql = require(__dirname + '/database/db-handler.js');
+sql.connection;
 
 // Router Modules
 const login = require(__dirname + '/routes/loginRouter.js');
 const register = require(__dirname + '/routes/registerRouter.js');
+const dashboard = require(__dirname + '/routes/dashboardRouter.js');
 
-const app = express(); 
+const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use('/', login);
-app.use('/register',register)
+app.use('/register',register);
+app.use('/dashboard', dashboard);
 
 app.get('/logout', (req,res) => {
-    sql.killConnection(); 
+    sql.killConnection();
 })
 
 app.listen(K.port, () => {
@@ -31,4 +33,4 @@ app.listen(K.port, () => {
 });
 
 /* Export after connection is established so other files can have reference to it */
-module.exports.sql = sql; 
+module.exports.sql = sql;
