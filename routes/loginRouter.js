@@ -14,10 +14,13 @@ router.use(function timeLog (req, res, next) {
 router.route('/')
     .get(function (req, res){ 
         console.log("got here")
-        res.send("Forward Login Data here");
+        res.send({
+            name: "jonathan phouminh"
+        });
     })
     .post(function (req,res) {
         
+        console.log("post request receive at " + __dirname);
         const email = req.body.email;
         const pass = req.body.password;
                 

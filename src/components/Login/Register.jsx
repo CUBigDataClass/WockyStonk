@@ -55,10 +55,10 @@ function Login(props) {
       <Grid />
       <div className="loginContainer rounded">
         <div className="innerLoginContainer rounded">
-          <section id="TitleSection " class="box1 titleLogo">
+          <section id="TitleSection " className="box1 titleLogo">
             Wocky Stonks
           </section>
-          <section class="box2">
+          <section className="box2">
             <TextInput
               type="email"
               placeholder="Enter Email"
@@ -70,9 +70,9 @@ function Login(props) {
               keystroke={handleKeyStroke}
             />
           </section>
-          <section id="ButtonSection" class="box3">
+          <section id="ButtonSection" className="box3">
             <SubmitButton
-              text="Sign Me up"
+              text="Sign up"
               clName="submitButton"
               submit={handleSubmit}
             />

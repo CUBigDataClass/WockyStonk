@@ -1,11 +1,13 @@
 import React,{useState} from "react";
+import {Link, useHistory } from "react-router-dom"; 
 import "../styles/Login.css";
+import axios from 'axios'
+
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
-import {Link, useHistory } from "react-router-dom"; 
 
 function Login(props) {
   // state vars
@@ -19,6 +21,15 @@ function Login(props) {
   //- PLACE AUTHENTICATION CODE IN HERE 
   function handleSubmit() {
     history.push('/dashboard', {creds: credentials});
+
+    axios
+      .get("http://localhost:3030/")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleKeyStroke(event) {
@@ -48,10 +59,10 @@ function Login(props) {
       <Grid />
       <div className="loginContainer rounded">
         <div className="innerLoginContainer rounded">
-          <section id="TitleSection " class="box1 titleLogo">
+          <section id="TitleSection " className="box1 titleLogo">
             Wocky Stonks
           </section>
-          <section class="box2">
+          <section className="box2">
             <TextInput
               type="email"
               placeholder="Enter Email"
@@ -63,7 +74,7 @@ function Login(props) {
               keystroke={handleKeyStroke}
             />
           </section>
-          <section id="ButtonSection" class="box3">
+          <section id="ButtonSection" className="box3">
             <Link to={"/register"}>
               <SubmitButton
                 text="Register"

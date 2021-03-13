@@ -2,7 +2,7 @@ const mock = [
     {
       name: "DOW",
       index: 32297.02,
-      change: 1.46
+      change: 2.55
     },
     {
       name: "NASDAQ",
