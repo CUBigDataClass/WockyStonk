@@ -12,9 +12,6 @@ router.use(function timeLog (req, res, next) {
 })
 
 router.route('/')
-    .get(function (req, res){
-        res.send("REGISTER GET");
-    })
     .post(function (req,res) {
         
         const email = req.body.email;

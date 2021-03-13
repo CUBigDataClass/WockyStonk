@@ -13,9 +13,12 @@ router.use(function timeLog (req, res, next) {
 
 router.route('/')
     .get(function (req, res){ 
-        console.log("got here")
+        let found = false;
+
+        //- Need to query db here then return a boolean to client 
+
         res.send({
-            name: "jonathan phouminh"
+            foundUser: found
         });
     })
     .post(function (req,res) {

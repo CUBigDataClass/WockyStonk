@@ -20,12 +20,17 @@ function Login(props) {
 
   //- PLACE AUTHENTICATION CODE IN HERE 
   function handleSubmit() {
-    history.push('/dashboard', {creds: credentials});
-
     axios
       .get("http://localhost:3030/")
       .then((res) => {
-        console.log(res.data);
+        let found = (res.data.foundUser)
+        
+        if (found) {
+          history.push('/dashboard', {creds: credentials});
+        } else{
+          console.log("USER NOT IN OUR SYSTEM");
+        }
+        
       })
       .catch((err) => {
         console.log(err);
