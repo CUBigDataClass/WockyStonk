@@ -25,5 +25,4 @@ async function scrapeSubreddit(){
       
 
 }
-
 scrapeSubreddit();
