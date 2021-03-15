@@ -1,26 +1,28 @@
-// AUTHOR: Jonathan Phouminh
-// DATE: March 15th, 2021
+//- AUTHOR: Jonathan Phouminh
+//- DATE: March 15th, 2021
+//- Retrieves Reddit Data
 const axios = require('axios');
 const K = require(__dirname + "/../K.js");
 
-// retrives reddit posts based on module
-async function getRedditPosts(submodule) {
-  var redditSubModule = "cuboulder";
-  var url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${K.postLimit}`;
+function getRedditPosts(submodule) {
+
+  const url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${K.postLimit}`;
   
-  axios
-  .get(url)
-  .then((res) => {
-    const data = res.data.data.children[0].data;
+  return new Promise((resolve, reject) => {
+    axios
+    .get(url)
+    .then((res) => {
+      const data = res.data.data.children[1].data.author;
 
-    // clean the data here 
-
-    return data
-    
+      // clean the data here 
+      resolve(data)  
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   })
-  .catch((err) => {
-    console.log(err);
-  });
 } 
-
 module.exports.getRedditPosts = getRedditPosts;
+
+
+// might want to make reddit posts part of a state var for dashboard and make it self managable. 
