@@ -1,12 +1,10 @@
-// AUTHOR: Jonathan Phouminh
-// DATE: February 27th, 2021
-
 require('dotenv').config();
 const K = require(__dirname + "/K.js");
 const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// Data Modules
 const sql = require(__dirname + '/database/db-handler.js');
 sql.connection;
 

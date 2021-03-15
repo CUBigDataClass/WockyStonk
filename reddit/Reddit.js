@@ -1,21 +1,26 @@
 // AUTHOR: Jonathan Phouminh
 // DATE: March 15th, 2021
+const axios = require('axios');
+const K = require(__dirname + "/../K.js");
 
-// Creating module that retrieves reddit posts for a # 
+// retrives reddit posts based on module
+async function getRedditPosts(submodule) {
+  var redditSubModule = "cuboulder";
+  var url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${K.postLimit}`;
+  
+  axios
+  .get(url)
+  .then((res) => {
+    const data = res.data.data.children[0].data;
 
-var axios = require('axios');
-var redditSubModule = "cuboulder";
-var returnLimit = 10;
-var url = `http://www.reddit.com/r/${redditSubModule}/new/.json?limit=${returnLimit}`;
+    // clean the data here 
 
+    return data
+    
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+} 
 
-axios
-      .get(url)
-      .then((res) => {
-        const data = res.data.data.children[0].data;
-        console.log(data)
-        
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+module.exports.getRedditPosts = getRedditPosts;
