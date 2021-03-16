@@ -3,7 +3,7 @@
 //- Returns reddit data back to callee
 const axios = require('axios');
 
-const postLimit = 5;
+const postLimit = 30;
 
 function getRedditPosts(submodule) {
   const url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${postLimit}`;
@@ -14,15 +14,17 @@ function getRedditPosts(submodule) {
       //- create an array of objects that you return
       let posts = [];
       res.data.data.children.forEach((post) => {
-        posts.push(
-          {
-            "author" : post.data.author,
-            "title" : post.data.title,
-            "subreddit" : post.data.subreddit_name_prefixed,
-            "content" : post.data.selftext,
-            "urlLink" : post.data.url
-          }
-        )
+        if (post.data.selftext !== "") {
+          posts.push(
+            {
+              "author" : post.data.author,
+              "title" : post.data.title,
+              "subreddit" : post.data.subreddit_name_prefixed,
+              "content" : post.data.selftext,
+              "urlLink" : post.data.url
+            }
+          )
+        }
       })
       resolve(posts)  
     })

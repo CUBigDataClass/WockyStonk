@@ -15,35 +15,27 @@ var mockData = {
 
 function Table(props) {
 
-    useState(() => {
-        console.log(mockData.content);
-    })
+    const [posts,updatePosts] = useState([mockData]);
 
+    useState( async () => {
+        let redditPackage = await Reddit.getRedditPosts('TLRY'); 
+        updatePosts(redditPackage);
+    })
 
     return (
     <div className="tableContainer">
-        <Cell
-        author={mockData.author}
-        title={mockData.title}
-        subreddit={mockData.subreddit}
-        content={mockData.content}
-        urlLink={mockData.urlLink}
-        />
 
-<Cell
-        author={mockData.author}
-        title={mockData.title}
-        subreddit={mockData.subreddit}
-        content={mockData.content}
-        urlLink={mockData.urlLink}
-        />
-        <Cell
-        author={mockData.author}
-        title={mockData.title}
-        subreddit={mockData.subreddit}
-        content={mockData.content}
-        urlLink={mockData.urlLink}
-        />
+        {posts.map((currPost, index) => {
+            return (
+                <Cell
+                author={currPost.author}
+                title={currPost.title}
+                subreddit={currPost.subreddit}
+                content={currPost.content}
+                urlLink={currPost.urlLink}
+                />
+            )
+        })}
     </div>
     );
 }
@@ -52,6 +44,14 @@ export default Table;
 
 
 /* 
+
+
+{items.map((item, index) => (
+        <Link to={`/shop/${obj}`}>
+          <h1 key={index}>{item}</h1>{" "}
+        </Link>
+      ))}
+
 //- Testing Reddit Function 
 let posts = async () => {
     console.log("before");
