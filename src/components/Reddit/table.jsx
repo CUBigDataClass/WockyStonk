@@ -1,5 +1,6 @@
-import React from "react";
-import "./styles/table.css";
+import React, { useState } from "react";
+import "../styles/table.css";
+import Reddit from '../../reddit/Reddit'
 import Cell from "./cell";
 
 var mockData = {
@@ -13,17 +14,50 @@ var mockData = {
 };
 
 function Table(props) {
-  return (
+
+    useState(() => {
+        console.log(mockData.content);
+    })
+
+
+    return (
     <div className="tableContainer">
-      <Cell
+        <Cell
         author={mockData.author}
         title={mockData.title}
         subreddit={mockData.subreddit}
         content={mockData.content}
         urlLink={mockData.urlLink}
-      />
+        />
+
+<Cell
+        author={mockData.author}
+        title={mockData.title}
+        subreddit={mockData.subreddit}
+        content={mockData.content}
+        urlLink={mockData.urlLink}
+        />
+        <Cell
+        author={mockData.author}
+        title={mockData.title}
+        subreddit={mockData.subreddit}
+        content={mockData.content}
+        urlLink={mockData.urlLink}
+        />
     </div>
-  );
+    );
 }
 
 export default Table;
+
+
+/* 
+//- Testing Reddit Function 
+let posts = async () => {
+    console.log("before");
+    let redditPackage = await Reddit.getRedditPosts('cuboulder'); 
+    console.log("after"); 
+}  
+posts();
+
+*/

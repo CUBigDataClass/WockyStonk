@@ -2,10 +2,11 @@
 //- DATE: March 15th, 2021
 //- Returns reddit data back to callee
 const axios = require('axios');
-const K = require(__dirname + "/../K.js");
+
+const postLimit = 5;
 
 function getRedditPosts(submodule) {
-  const url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${K.postLimit}`;
+  const url = `http://www.reddit.com/r/${submodule}/new/.json?limit=${postLimit}`;
   return new Promise((resolve, reject) => {
     axios
     .get(url)

@@ -15,7 +15,7 @@ router.use(function timeLog (req, res, next) {
 //- Make sure you are recieving the data here 
 router.route('/')
     .post(function (req,res) {
-        let found = false;
+        let found = true;
         const sentEmail = req.body.credentials.email; 
         const sentPassword = req.body.credentials.password;
 

@@ -1,7 +1,5 @@
 import React from "react";
-import "./styles/table.css";
-
-//- Where you left off,
+import "../styles/table.css";
 
 const icon =
   "https://img-premium.flaticon.com/svg/3916/3916869.svg?token=exp=1615910524~hmac=a71b42572d6f1f378dd73816bbb747e3";
@@ -30,7 +28,7 @@ function Cell(props) {
         </div>
         <div className="body">
           <h3>Author: {props.author}</h3>
-          <span style={{ fontSize: "1.2em" }}>{props.content}</span>
+          <span>{props.content}</span>
         </div>
       </section>
     </div>
