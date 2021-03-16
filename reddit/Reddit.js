@@ -12,13 +12,20 @@ function getRedditPosts(submodule) {
     axios
     .get(url)
     .then((res) => {
-      const data = res.data.data.children[1].data.author;
 
+      //- Need to bundle this up back to the react client
+      const author = res.data.data.children[1].data.author; 
+      const title = res.data.data.children[1].data.title; 
+      const subreddit = res.data.data.children[1].data.subreddit_name_prefixed;
+      const content = res.data.data.children[1].data.selftext;
+      const urlLink = res.data.data.children[1].data.url;
+      
+      console.log(`> ${content}`)
       // clean the data here 
-      resolve(data)  
+      resolve("data")  
     })
     .catch((err) => {
-      console.log(err);
+      reject(err);
     });
   })
 } 
