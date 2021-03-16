@@ -4,5 +4,5 @@
 
 module.exports = {
     port: 3030,
-    postLimit:20
+    postLimit:30
 };

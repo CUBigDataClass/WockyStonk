@@ -26,7 +26,7 @@ app.use('/dashboard', dashboard);
 //- Testing Reddit Function 
 let posts = async () => {
     console.log("before");
-    console.log(await Reddit.getRedditPosts('cuboulder')); 
+    let redditPackage = await Reddit.getRedditPosts('cuboulder'); 
     console.log("after"); 
 }   
 posts();

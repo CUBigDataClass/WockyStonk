@@ -13,16 +13,17 @@ function getRedditPosts(submodule) {
     .get(url)
     .then((res) => {
 
-      //- Need to bundle this up back to the react client
-      const author = res.data.data.children[1].data.author; 
-      const title = res.data.data.children[1].data.title; 
-      const subreddit = res.data.data.children[1].data.subreddit_name_prefixed;
-      const content = res.data.data.children[1].data.selftext;
-      const urlLink = res.data.data.children[1].data.url;
+      //- Need to loop through all of return values up to N
+
+      let redditPackage = {
+        "author" : res.data.data.children[1].data.author,
+        "title" : res.data.data.children[1].data.title,
+        "subreddit" : res.data.data.children[1].data.subreddit_name_prefixed,
+        "content" : res.data.data.children[1].data.selftext,
+        "urlLink" :res.data.data.children[1].data.url
+      }
       
-      console.log(`> ${content}`)
-      // clean the data here 
-      resolve("data")  
+      resolve(redditPackage)  
     })
     .catch((err) => {
       reject(err);
