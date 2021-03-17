@@ -2,7 +2,6 @@
 //- DATE: March 15th, 2021
 //- Returns reddit data back to callee
 const axios = require('axios');
-
 const postLimit = 30;
 
 function getRedditPosts(submodule) {
