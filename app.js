@@ -1,12 +1,9 @@
-// AUTHOR: Jonathan Phouminh
-// DATE: February 27th, 2021
-
-require('dotenv').config();
 const K = require(__dirname + "/K.js");
 const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+// Data Modules
 const sql = require(__dirname + '/database/db-handler.js');
 sql.connection;
 
@@ -27,10 +24,11 @@ app.use('/dashboard', dashboard);
 app.get('/logout', (req,res) => {
     sql.killConnection();
 })
-
 app.listen(K.port, () => {
     console.log(`Server started on port: ${K.port}`);
 });
 
-/* Export after connection is established so other files can have reference to it */
+//- Export after connection is established so other files can have reference to it
 module.exports.sql = sql;
+
+
