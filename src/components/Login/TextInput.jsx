@@ -5,9 +5,8 @@ import "../styles/Login.css";
   state value on the Login Root Component 
 */
 class TextInput extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
+  // constructor here if you need props / bind components
 
   render() {
     return (

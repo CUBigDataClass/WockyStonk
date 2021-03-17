@@ -42,11 +42,11 @@ class Grid extends React.Component {
                     <img
                     className="circle"
                     src="
-                        https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1615766400&Signature=NBpvoFmN-6jLxMQ9MsklwHkVd1CZOifOuNrAtfIiUlYBG7HGS3gR-y10biJNo4QgnowxqzCFvQCfRB4ds5qddXkcLVwLAY4~VKd9zKACfEkvfD5QX0fBdwFvtoRy86n85GmKXlkaAmn150je8Y~IgrzzkJVRo6D7oRsMmsDcoEtoEsV~8F-5puzizzniVA3qgbnT92RE~sltXQkKRS1jXaHfQ8ThI3FnTsDOMjnhPDbz~yM1LF72WEfDkJl0CoDSreYt0uvOSgXbhAyzK3kWEbYCULEvRjcZA6OspVHsBGgwKMj12-i6P5i2YFFjfkTy~tPHOJXVD9f0-EQ0BMxiyA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA
+                    https://image.flaticon.com/icons/png/512/189/189093.png
                         "
-                    alt="andyHead"
+                    alt="moneybag"
                     />
-                    <span className="input-text">Andy Head</span>
+                    <span className="input-text">Stonk</span>
                 </div>
                 </div>
         </div>

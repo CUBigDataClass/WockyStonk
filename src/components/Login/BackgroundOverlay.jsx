@@ -2,9 +2,9 @@ import React from 'react';
 import "../styles/Login.css";
 
 class BackgroundOverlay extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+   
+    // constructor here if you need to pass props / bind functions 
+
     render(){
         return (
             <div> 

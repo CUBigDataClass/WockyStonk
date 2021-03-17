@@ -8,7 +8,7 @@ function Table(props) {
     const [posts,updatePosts] = useState([]);
 
     useState( async () => {
-        let redditPackage = await Reddit.getRedditPosts('TLRY'); 
+        let redditPackage = await Reddit.getRedditPosts('wallstreetbets'); 
         updatePosts(redditPackage);
     })
 
@@ -22,6 +22,7 @@ function Table(props) {
                     subreddit={currPost.subreddit}
                     content={currPost.content}
                     urlLink={currPost.urlLink}
+                    key={index}
                     />
                 )
             })}

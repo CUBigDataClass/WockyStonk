@@ -5,7 +5,7 @@ const icon =
   "https://img-premium.flaticon.com/svg/3916/3916869.svg?token=exp=1615910524~hmac=a71b42572d6f1f378dd73816bbb747e3";
 
 function Cell(props) {
-  
+
   function handleClick(event) {
     window.open(props.urlLink, "_blank");
   }
@@ -26,7 +26,7 @@ function Cell(props) {
           <h1>{props.title}</h1>
         </div>
         <div className="body">
-          <h3>Author: {props.author}</h3>
+          <h4>Posted by {props.author}</h4>
           <span>{props.content}</span>
         </div>
       </section>
