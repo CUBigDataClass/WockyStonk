@@ -1,0 +1,12 @@
+.selectors{
+    display: flex;
+    width: 100%;
+    min-height: 15vh;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}

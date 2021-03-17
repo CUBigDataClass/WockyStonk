@@ -1,13 +1,20 @@
 import React from 'react'; 
-import Table from '../Reddit/table';
 import { useLocation } from 'react-router';
+import BodyContent from './BodyContent'
+import Buttons from './Buttons'
+import Header from './Header'
+
 
 
 function Dashboard() {
-    const location = useLocation();
-    console.log(location.state.creds);
+
     return (
-        <Table />
+        <div>
+            <Header/>
+            <BodyContent/>
+            <Buttons/>
+        </div>
+
     )
 }
 
