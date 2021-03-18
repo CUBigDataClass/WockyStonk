@@ -16,7 +16,7 @@ class Grid extends React.Component {
                     alt="andyHead"
                     />
 
-                    <span className="input-text">See what Reddit is saying!</span>
+                    <span className="input-text-icon" > See what reddit is saying!</span>
                 </div>
                 <div className="tr iconCell">
                     <img
@@ -26,7 +26,7 @@ class Grid extends React.Component {
                         "
                     alt="andyHead"
                     />
-                    <span className="input-text">See what Twitter is saying!</span>
+                    <span className="input-text-icon">See what Twitter is saying!</span>
                 </div>
                 <div className="bl iconCell">
                     <img
@@ -36,7 +36,7 @@ class Grid extends React.Component {
                         "
                     alt="andyHead"
                     />
-                    <span className="input-text"> Track and Analyze Stock History </span>
+                    <span className="input-text-icon"> Track and Analyze Stock History </span>
                 </div>
                 <div className="br iconCell">
                     <img
@@ -46,7 +46,7 @@ class Grid extends React.Component {
                         "
                     alt="moneybag"
                     />
-                    <span className="input-text">Stonk</span>
+                    <span className="input-text-icon">Stonk</span>
                 </div>
                 </div>
         </div>

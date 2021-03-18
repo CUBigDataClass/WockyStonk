@@ -1,22 +1,30 @@
-import React,{useState} from "react";
+import React from "react";
 import "../styles/Login.css";
 import axios from 'axios';
+import { useHistory } from "react-router-dom"; 
+
+//- Components Imports
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
-import { useHistory } from "react-router-dom"; 
+
+//- Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import updateTextField from '../../redux/actions/login';
 
 function Login(props) {
-
-  // state vars
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: ""
-  });
-
+  const dispatch = useDispatch();
   const history = useHistory();
+
+  const email = useSelector((state) => state.emailText);
+  const password = useSelector((state) => state.passwordText);
+
+  let credentials = {
+    email, 
+    password
+  }
 
   //- INSERT USER INTO DB HERE 
   function handleSubmit(event) {
@@ -46,21 +54,10 @@ function Login(props) {
     const loc = event.target.type;
     const value = event.target.value; 
 
-
     if (loc === "email") {
-      setCredentials( (prev) => {
-        return {
-          email: value, 
-          password: prev.password
-        }
-      });
+      dispatch(updateTextField(value));
     } else {
-      setCredentials( (prev) => {
-        return {
-          email: prev.email, 
-          password: value
-        }
-      });
+      dispatch(updateTextField(value));
     }
   }
 
@@ -98,9 +95,7 @@ function Login(props) {
     </div>
   );
 }
-
 export default Login;
-
 
 //- Link to how to fetch express server
 //https://stackoverflow.com/questions/46867494/%C3%97-react-fetch-wont-hit-index-route-in-express-router

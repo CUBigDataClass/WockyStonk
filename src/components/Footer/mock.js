@@ -15,6 +15,5 @@ const mock = [
       change: 0.6
     }
   ];
-  
   export default mock;
   
