@@ -3,11 +3,17 @@ import {Link, useHistory } from "react-router-dom";
 import "../styles/Login.css";
 import axios from 'axios'
 
+//- Component Imports
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
+
+//- Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import { changeText } from "../../redux/actions";
+
 
 function Login(props) {
   // state vars
@@ -16,6 +22,7 @@ function Login(props) {
     password: ""
   });
 
+  const dispatch = useDispatch();
   const history = useHistory();
 
   let axiosConfig = {
@@ -28,7 +35,6 @@ function Login(props) {
   //- Basic Authentication: Will route if back-end tells us if they are in
   function handleSubmit(event) {
     event.preventDefault();
-
     axios
       .post("http://localhost:3030/", {credentials}, axiosConfig)
       .then((res) => {

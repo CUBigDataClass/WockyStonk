@@ -1,13 +1,11 @@
-import Login from './Login/Login'; 
-import Register from './Login/Register';
-import DashBoard from './Dashboard/Dashboard';
-import './styles/Login.css';
+import Login from './components/Login/Login'; 
+import Register from './components/Login/Register';
+import DashBoard from './components/Dashboard/Dashboard';
+import './components/styles/Login.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from 'react-redux'
 
 function Entry() {
   return (
-    <Provider>
       <Router> 
         <div> 
         <Switch>
@@ -17,7 +15,6 @@ function Entry() {
         </Switch>
         </div> 
       </Router> 
-    </Provider>
   );
 }
 

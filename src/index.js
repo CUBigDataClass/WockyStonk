@@ -1,9 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Entry from './components/Entry';
+import Entry from './Entry';
+import { createStore } from "redux";
+import { Provider } from 'react-redux'
+import allReducers from './redux/reducers'
+
+
+//- create redux store 
+const mystore = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
-  <Entry />,
+  <Provider store={mystore}>
+  <Entry />
+  </Provider>,
   document.getElementById('root')
 );
 
