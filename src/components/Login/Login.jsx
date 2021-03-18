@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer'
 
 //- Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import {updateEmailTextField, updatePasswordTextField} from '../../redux/actions/login';
+import updateEmailTextField ,{updatePasswordTextField} from '../../redux/actions/login';
 
 const axiosConfig = {
   headers: {

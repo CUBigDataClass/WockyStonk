@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer'
 
 //- Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { updateEmailTextField, updatePasswordTextField } from '../../redux/actions/login';
+import updateTextField from '../../redux/actions/login';
 
 function Login(props) {
   const dispatch = useDispatch();
@@ -55,9 +55,9 @@ function Login(props) {
     const value = event.target.value; 
 
     if (loc === "email") {
-      dispatch(updateEmailTextField(value));
+      dispatch(updateTextField(value));
     } else {
-      dispatch(updatePasswordTextField(value));
+      dispatch(updateTextField(value));
     }
   }
 
