@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/table.css";
 
 const icon =
-  "https://img-premium.flaticon.com/svg/3916/3916869.svg?token=exp=1615910524~hmac=a71b42572d6f1f378dd73816bbb747e3";
+  "https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1616371200&Signature=Tq4mA6HZnUKJKRkE0MHMocnHtvs15sviKJ6IUDmpU41gQ2RCzQIEyvn6GSViPZaqtqlP4qG0zKz~b~erTf1aT-Os7ykCs7BLbqR9l8E5OjbcWwm~b0VPoVQOB9NuOyEuyDLUfB~KW5eHKe-Mg6OpXtnQ77RdPeIh13QMryvEsccv57n4q-wfSPwMkuF0-4K5zrHVRNGRg6LEr~-jBEISl3LkE3omzT4891tLm1ABERMqroxVT4MlHvHKb2kRBXkvJ1-OEBgvpizRST5cPyF7CZpSfKdMCG9ryzwZGVWDqra4TQLUNmhdgxEZ7jjU6SsNsy~5gcDNLWq4EXZaZU9H8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
 
 function Cell(props) {
 
@@ -17,7 +17,7 @@ function Cell(props) {
       style={{ backgroundColor: "white" }}
     >
       <section className="iconContainer">
-        <img src={icon} alt="profilepic" className="iconImage" />
+        <img src={icon} alt="icon" className="iconImage" />
       </section>
 
       <section className="contentContainer">
