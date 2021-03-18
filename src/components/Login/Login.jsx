@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom"; 
+import {Link, useHistory } from "react-router-dom"; 
 import "../styles/Login.css";
-import ""
 import axios from 'axios'
 
 //- Component Imports
@@ -13,7 +12,7 @@ import Footer from '../Footer/Footer'
 
 //- Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { updateEmailTextField, updatePasswordTextField } from '../../redux/actions/login';
+import {updateEmailTextField, updatePasswordTextField} from '../../redux/actions/login';
 
 const axiosConfig = {
   headers: {
@@ -23,6 +22,7 @@ const axiosConfig = {
 };
 
 function Login(props) {
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,6 +36,10 @@ function Login(props) {
 
   //- Basic Authentication: Will route if back-end tells us if they are in
   function handleSubmit(event) {
+    event.preventDefault();
+
+    //- grab the email and password from redux here 
+
     axios
       .post("http://localhost:3030/", {credentials}, axiosConfig)
       .then((res) => {
@@ -53,8 +57,7 @@ function Login(props) {
       .catch((err) => {
         console.log(err);
       });
-      event.preventDefault();
-}
+  }
 
   function handleKeyStroke(event) {
     const loc = event.target.type;

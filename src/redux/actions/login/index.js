@@ -1,5 +1,3 @@
-import { text } from "body-parser";
-
 export const updateEmailTextField = (textInput) => {
     return {
         type: "email", 
