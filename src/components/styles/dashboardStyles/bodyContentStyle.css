@@ -1,0 +1,32 @@
+.mainBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* position: relative; */
+    /* right: 0%; */
+
+}
+
+.socialMedia{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width:45%;
+    justify-content: space-between;
+    
+
+}
+
+.reddit{
+    display: flex;
+    height: 45%;
+    width: 90%;
+    background-color: grey;
+}
+
+.twitter{
+    display: flex;
+    height: 45%;
+    width: 100%;
+    
+}

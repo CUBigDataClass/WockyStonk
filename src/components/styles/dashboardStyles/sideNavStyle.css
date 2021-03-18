@@ -1,0 +1,37 @@
+.profile-pic{
+    position: relative;
+    left: 6vw;
+    border-radius: 50%;
+    height: 35%;
+    width: 35%; 
+    z-index: 99999999999999999;
+}
+
+span{
+    cursor:pointer;
+}
+
+#dropdown{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    /* z-index: 1; */
+    top: 0;
+    right: 0;
+    background-color: grey;
+    overflow-x:hidden;
+    transition-duration: 0.5s;
+}
+
+.stonk{
+    width: 100%;
+    background-color: blue;
+    height: 5vh;
+}
+.filler{
+    width: 100%;
+    background-color: red;
+    height: 15vh;
+}
