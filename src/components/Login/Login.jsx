@@ -1,6 +1,7 @@
-import React,{useState} from "react";
-import {Link, useHistory } from "react-router-dom"; 
+import React from "react";
+import { Link, useHistory } from "react-router-dom"; 
 import "../styles/Login.css";
+import ""
 import axios from 'axios'
 
 //- Component Imports
@@ -12,29 +13,29 @@ import Footer from '../Footer/Footer'
 
 //- Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { changeText } from "../../redux/actions";
+import { updateEmailTextField, updatePasswordTextField } from '../../redux/actions/login';
 
+const axiosConfig = {
+  headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      "Access-Control-Allow-Origin": "*",
+  }
+};
 
 function Login(props) {
-  // state vars
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: ""
-  });
-
   const dispatch = useDispatch();
   const history = useHistory();
 
-  let axiosConfig = {
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
-    }
-  };
+  const email = useSelector((state) => state.emailText);
+  const password = useSelector((state) => state.passwordText);
+
+  let credentials = {
+    email, 
+    password
+  }
 
   //- Basic Authentication: Will route if back-end tells us if they are in
   function handleSubmit(event) {
-    event.preventDefault();
     axios
       .post("http://localhost:3030/", {credentials}, axiosConfig)
       .then((res) => {
@@ -52,26 +53,19 @@ function Login(props) {
       .catch((err) => {
         console.log(err);
       });
-  }
+      event.preventDefault();
+}
 
   function handleKeyStroke(event) {
     const loc = event.target.type;
     const value = event.target.value; 
 
+    //- dispatch email / password updates
+    
     if (loc === "email") {
-      setCredentials( (prev) => {
-        return {
-          email: value, 
-          password: prev.password
-        }
-      });
+      dispatch(updateEmailTextField(value));
     } else {
-      setCredentials( (prev) => {
-        return {
-          email: prev.email, 
-          password: value
-        }
-      });
+      dispatch(updatePasswordTextField(value));
     }
   }
 
