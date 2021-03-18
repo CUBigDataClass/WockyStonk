@@ -34,12 +34,13 @@
   width: 40%;
 }
 
-.input-text {
+.input-text-icon {
   font-family: Garamond;
   font-style: normal;
   font-weight: normal;
-  font-size: 0.5em;
+  font-size: .8em;
   line-height: 45px;
+  overflow:visible;
 
   color: white;
 }
@@ -52,6 +53,7 @@
   /* Sizing */
   width: 50%;
   height: 80%;
+  max-width: 1080px;
 
   /* Flex Options */
   display: flex;
@@ -130,6 +132,7 @@
   /* Sizing */
   width: 40%;
   height: 80%;
+  max-width: 960px;
 
   /* Flex Options */
   display: flex;
@@ -169,7 +172,7 @@
 
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 
   height: 31.9999%;
   width: 95%;
@@ -181,7 +184,6 @@
   font-style: normal;
   font-weight: bold;
   font-size: 7vh;
-  line-height: 3;
   text-align: center;
 
   color: black;
