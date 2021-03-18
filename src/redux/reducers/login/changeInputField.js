@@ -16,6 +16,5 @@ const passwordReducer = (state = "", action) => {
   }
 }
   
-export default emailReducer;
-export {passwordReducer};
+export {passwordReducer, emailReducer};
   

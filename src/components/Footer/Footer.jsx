@@ -1,28 +1,38 @@
 import React, { useState } from "react";
 import "../styles/Footer.css";
+
+//- Component Imports
 import data from "./mock";
 import Ticker from "./Ticker";
 
+//- Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+
+//- Footer will just read off the values from the state, have something dispatch actions to update
+//- the values of the each index 
 function Footer(props) {
-  
-  const [tickers, updateTickers] = useState(data); 
+ 
+  const dispatch = useDispatch();
+  const dow = useSelector((state) => state.dowIndex);
+  const nasdaq = useSelector((state) => state.nasdaqIndex);
+  const sp = useSelector((state) => state.spIndex);
 
   return (
     <div className="footer">
       <Ticker
-        label={tickers[0].name}
-        index={tickers[0].index}
-        change={tickers[0].change}
+        label={dow.name}
+        index={dow.index}
+        change={dow.change}
       />
       <Ticker
-        label={tickers[1].name}
-        index={tickers[1].index}
-        change={tickers[1].change}
+        label={nasdaq.name}
+        index={nasdaq.index}
+        change={nasdaq.change}
       />
       <Ticker
-        label={tickers[2].name}
-        index={tickers[2].index}
-        change={tickers[2].change}
+        label={sp.name}
+        index={sp.index}
+        change={sp.change}
       />
     </div>
   );

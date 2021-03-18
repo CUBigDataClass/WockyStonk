@@ -21,6 +21,7 @@ const initialState = [
 const dowReducer = (state=initialState[0], action) => {
     switch(action.type) {
         case "updateIndex":
+            console.log('came here');
             return state
         default: 
             return state 
