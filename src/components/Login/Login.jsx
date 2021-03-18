@@ -1,9 +1,9 @@
 import React from "react";
-import {Link, useHistory } from "react-router-dom"; 
+import { Link, useHistory } from "react-router-dom"; 
 import "../styles/Login.css";
 import axios from 'axios'
 
-//- Component Imports
+//- Components Imports
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
@@ -22,7 +22,6 @@ const axiosConfig = {
 };
 
 function Login(props) {
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,8 +36,6 @@ function Login(props) {
   //- Basic Authentication: Will route if back-end tells us if they are in
   function handleSubmit(event) {
     event.preventDefault();
-
-    //- grab the email and password from redux here 
 
     axios
       .post("http://localhost:3030/", {credentials}, axiosConfig)
@@ -62,8 +59,6 @@ function Login(props) {
   function handleKeyStroke(event) {
     const loc = event.target.type;
     const value = event.target.value; 
-
-    //- dispatch email / password updates
     
     if (loc === "email") {
       dispatch(updateEmailTextField(value));
@@ -112,7 +107,6 @@ function Login(props) {
     </div>
   );
 }
-
 export default Login;
 
 //- Link to how to fetch express server requests 
