@@ -5,6 +5,7 @@ import alpha_vantage
 import pandas as pd
 
 from alpha_vantage.timeseries import TimeSeries
+from sqlalchemy import create_engine
 
 """
 API_URL = "https://www.alphavantage.co/query"
@@ -36,7 +37,10 @@ ts = TimeSeries(key, output_format='pandas')
 data, meta = ts.get_intraday('TSLA', interval='1min', outputsize='full')
 columns = ['open', 'high', 'low', 'close', 'volume']
 data.columns = columns
-
+data['symbol'] = meta['2. Symbol']
+data = data[['symbol','open', 'high', 'low', 'close', 'volume']]
+data['tradeDate'] = data.index.date
+data['time'] = data.index.time
 #print(data)
 
 connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com',
@@ -46,8 +50,7 @@ connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amaz
 
 cursor = connection.cursor()
 
-from sqlalchemy import create_engine
-
 engine = create_engine('mysql+pymysql://wocky:stonksgoup@wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com/wockyDB')
 
-data.to_sql('testStockInfo', con=engine)
+print(data)
+#data.to_sql('testStockInfo', con=engine)
