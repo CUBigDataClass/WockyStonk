@@ -38,28 +38,24 @@ key = "CD4M3BIUZFFI9SZ7"
 ts = TimeSeries(key, output_format='pandas')
 with open('StockSymbols.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
-    line_count = 0
     for row in csv_reader:
-        if (line_count == 0):
-            line_count+=1
-        else:
-            sym = row[0]
-            data, meta = ts.get_intraday(sym, interval='30min', outputsize='full')
-            columns = ['open', 'high', 'low', 'close', 'volume']
-            data.columns = columns
-            data['symbol'] = meta['2. Symbol']
-            data = data[['symbol','open', 'high', 'low', 'close', 'volume']]
-            data['tradeDate'] = data.index.date
-            data['time'] = data.index.time
-            print(data)
+        sym = row[0]
+        data, meta = ts.get_intraday(sym, interval='30min', outputsize='full')
+        columns = ['open', 'high', 'low', 'close', 'volume']
+        data.columns = columns
+        data['symbol'] = meta['2. Symbol']
+        data = data[['symbol','open', 'high', 'low', 'close', 'volume']]
+        data['tradeDate'] = data.index.date
+        data['time'] = data.index.time
+        print(data)
 
-            connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com',
-                                        user='wocky',
-                                        password='stonksgoup',
-                                        db='wockyDB')
+        connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com',
+                                    user='wocky',
+                                    password='stonksgoup',
+                                    db='wockyDB')
 
-            cursor = connection.cursor()
+        cursor = connection.cursor()
 
-            engine = create_engine('mysql+pymysql://wocky:stonksgoup@wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com/wockyDB')
+        engine = create_engine('mysql+pymysql://wocky:stonksgoup@wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com/wockyDB')
 
-            #data.to_sql('tradeDates', con=engine, if_exists='replace')
+        #data.to_sql('tradeDates', con=engine, if_exists='append')
