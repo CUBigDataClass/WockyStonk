@@ -3,8 +3,10 @@ import sqlalchemy
 import requests
 import alpha_vantage
 import pandas as pd
+import csv
 
 from alpha_vantage.timeseries import TimeSeries
+from sqlalchemy import create_engine
 
 """
 API_URL = "https://www.alphavantage.co/query"
@@ -31,28 +33,29 @@ connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amaz
 # Allow for execution of SQL queries
 cursor = connection.cursor()
 """
+
 key = "CD4M3BIUZFFI9SZ7"
-symbolName = 'TSLA'
 ts = TimeSeries(key, output_format='pandas')
-data, meta = ts.get_intraday_extended('TSLA', interval='1min', outputsize='full')
-columns = ['open', 'high', 'low', 'close', 'volume']
-data.columns = columns
+with open('StockSymbols.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+        sym = row[0]
+        data, meta = ts.get_intraday(sym, interval='30min', outputsize='full')
+        columns = ['open', 'high', 'low', 'close', 'volume']
+        data.columns = columns
+        data['symbol'] = meta['2. Symbol']
+        data = data[['symbol','open', 'high', 'low', 'close', 'volume']]
+        data['tradeDate'] = data.index.date
+        data['time'] = data.index.time
+        print(data)
 
-data.insert(loc=0,
-            column = 'symbol',
-            value = symbolName)
+        connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com',
+                                    user='wocky',
+                                    password='stonksgoup',
+                                    db='wockyDB')
 
-#print(data)
+        cursor = connection.cursor()
 
-connection = pymysql.connect(host='wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com',
-                             user='wocky',
-                             password='stonksgoup',
-                             db='wockyDB')
+        engine = create_engine('mysql+pymysql://wocky:stonksgoup@wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com/wockyDB')
 
-cursor = connection.cursor()
-
-from sqlalchemy import create_engine
-
-engine = create_engine('mysql+pymysql://wocky:stonksgoup@wockystonksdb.cnmtp6tov1dk.us-east-2.rds.amazonaws.com/wockyDB')
-
-data.to_sql('testStockInfoSymbol', con=engine)
+        #data.to_sql('tradeDates', con=engine, if_exists='append')
