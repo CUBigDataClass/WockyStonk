@@ -10,9 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 function Footer(props) {
 
+  //- gets called after component mounts
   useEffect(() => {
-    console.log(refreshIndex()); 
+    const indicies = refreshIndex(); 
+    const dow = indicies["DOW"]; 
+    const sp = indicies["SP"]; 
+    const nas = indicies["NAS"]
 
+    console.log(dow); 
   });
  
   //- gets access to redux state vars 
