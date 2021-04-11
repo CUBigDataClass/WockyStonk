@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import refreshIndex from "./IndexModule"; 
 import "../styles/Footer.css";
 
 //- Component Imports
@@ -8,6 +9,11 @@ import Ticker from "./Ticker";
 import { useSelector, useDispatch } from "react-redux";
 
 function Footer(props) {
+
+  useEffect(() => {
+    console.log(refreshIndex()); 
+
+  });
  
   //- gets access to redux state vars 
   const dow = useSelector((state) => state.dowIndex);
