@@ -23,7 +23,7 @@ const dowReducer = (state=initialState[0], action) => {
         case "updateIndex":
             console.log('came here');
             return state
-        default: 
+        default:
             return state 
     }
 }
