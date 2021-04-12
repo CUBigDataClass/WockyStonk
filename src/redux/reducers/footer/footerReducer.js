@@ -1,18 +1,21 @@
 const initialState = [
     {
         name: "DOW",
-        index: 32297.02,
-        change: 3.0
+        index: 0, 
+        previousClose: 0, 
+        change: 0
     },
     {
         name: "NASDAQ",
-        index: 13068.83,
-        change: -0.04
+        index: 0, 
+        previousClose: 0, 
+        change: 0
     },
     {
         name: "S&P500",
-        index: 3898.81,
-        change: 0.6
+        index: 0, 
+        previousClose: 0, 
+        change: 0
     }
 ];
 
@@ -20,17 +23,17 @@ const initialState = [
 //- you can probably collapse this all into one? how would you set the initial states 
 const dowReducer = (state=initialState[0], action) => {
     switch(action.type) {
-        case "updateIndex":
-            console.log('came here');
-            return state
+        case "updateDOWIndex":
+            return action.payload; 
         default:
             return state 
     }
 }
+
 const nasdaqReducer = (state=initialState[1], action) => {
     switch(action.type) {
-        case "updateIndex":
-            return state
+        case "updateNASIndex":
+            return action.payload; 
         default: 
             return state 
     }
@@ -38,12 +41,11 @@ const nasdaqReducer = (state=initialState[1], action) => {
  
 const spReducer = (state=initialState[2], action) => {
     switch(action.type) {
-        case "updateIndex":
-            return state
+        case "updateSPIndex":
+            return action.payload; 
         default: 
             return state 
     }
 }
-
 export default nasdaqReducer; 
 export { dowReducer, spReducer }
