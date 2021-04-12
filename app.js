@@ -3,10 +3,6 @@ const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// Data Modules
-const sql = require(__dirname + '/database/db-handler.js');
-sql.connection;
-
 // Router Modules
 const login = require(__dirname + '/routes/loginRouter.js');
 const register = require(__dirname + '/routes/registerRouter.js');
@@ -27,8 +23,5 @@ app.get('/logout', (req,res) => {
 app.listen(K.port, () => {
     console.log(`Server started on port: ${K.port}`);
 });
-
-//- Export after connection is established so other files can have reference to it
-module.exports.sql = sql;
 
 

@@ -6,6 +6,9 @@ const K = require(__dirname + "/../K.js");
 const express = require('express');
 const router = express.Router(); 
 
+// Data Modules
+const sql = require(__dirname + '../../database/db-handler.js');
+
 // This gets called anytime a request is made to this route
 router.use(function timeLog (req, res, next) {
     next();
@@ -21,9 +24,10 @@ router.route('/')
 
         console.log(sentEmail);
         console.log(sentPassword);
-                
-        //- Implement Database Authentication here 
         
+        //- Implement Database Authentication here 
+        sql.createConnection("SELECT * FROM userInfo;"); 
+
         //- Let client know if user was found or not
         res.send({isUser: found});
     });
