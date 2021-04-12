@@ -1,29 +1,37 @@
-import React,{useState} from "react";
-import {Link, useHistory } from "react-router-dom"; 
+import React from "react";
+import { Link, useHistory } from "react-router-dom"; 
 import "../styles/Login.css";
 import axios from 'axios'
 
+//- Components Imports
 import TextInput from "./TextInput";
 import SubmitButton from "./SubmitButton";
 import Grid from './Grid';
 import BackgroundOverlay from './BackgroundOverlay'
 import Footer from '../Footer/Footer'
 
-function Login(props) {
-  // state vars
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: ""
-  });
+//- Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import updateEmailTextField ,{updatePasswordTextField} from '../../redux/actions/login';
 
+const axiosConfig = {
+  headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      "Access-Control-Allow-Origin": "*",
+  }
+};
+
+function Login(props) {
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  let axiosConfig = {
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
-    }
-  };
+  const email = useSelector((state) => state.emailText);
+  const password = useSelector((state) => state.passwordText);
+
+  let credentials = {
+    email, 
+    password
+  }
 
   //- Basic Authentication: Will route if back-end tells us if they are in
   function handleSubmit(event) {
@@ -51,21 +59,11 @@ function Login(props) {
   function handleKeyStroke(event) {
     const loc = event.target.type;
     const value = event.target.value; 
-
+    
     if (loc === "email") {
-      setCredentials( (prev) => {
-        return {
-          email: value, 
-          password: prev.password
-        }
-      });
+      dispatch(updateEmailTextField(value));
     } else {
-      setCredentials( (prev) => {
-        return {
-          email: prev.email, 
-          password: value
-        }
-      });
+      dispatch(updatePasswordTextField(value));
     }
   }
 
@@ -109,7 +107,6 @@ function Login(props) {
     </div>
   );
 }
-
 export default Login;
 
 //- Link to how to fetch express server requests 
