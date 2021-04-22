@@ -1,16 +1,16 @@
 import React from 'react';
 import '../styles/dashboardStyles/graphStyle.css';
 import ChartistGraph from 'react-chartist';
-
-
+import axios from 'axios';
 class Graph extends React.Component{
     constructor(props){
         super(props);
+        console.log(props.props.labels)
         this.state={
             data:{
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                labels: props.props.labels,
                 series: [
-                  [12, 9, 7, 8, 5]
+                    props.props.series
                 ]
             },
             options:{

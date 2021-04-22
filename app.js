@@ -1,8 +1,9 @@
+
 const K = require(__dirname + "/K.js");
 const express = require('express'); // Express framework
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+console.log(__dirname);
 // Data Modules
 const sql = require(__dirname + '/database/db-handler.js');
 sql.connection;
@@ -21,9 +22,20 @@ app.use('/', login);
 app.use('/register',register);
 app.use('/dashboard', dashboard);
 
+app.post('/dashboard', function(req,res){
+    console.log("In server? ");
+    console.log(req);
+    const searchWord = req.body.word;
+    console.log("In server, search word is: " + searchWord);
+
+})
 app.get('/logout', (req,res) => {
     sql.killConnection();
 })
+
+
+
+
 app.listen(K.port, () => {
     console.log(`Server started on port: ${K.port}`);
 });

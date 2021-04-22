@@ -1,5 +1,5 @@
 require('dotenv').config();
-const K = require(__dirname + "/../K.js");
+//const K = require(__dirname + "/../K.js");
 
 // Create Database Connection
 var mysql = require('mysql');
@@ -13,39 +13,6 @@ password: RDS username
 port: Port to communicate with database
 */ 
 const connection = mysql.createConnection({
-<<<<<<< Updated upstream
-    host: process.env.RDS_HOSTNAME,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    port: process.env.RDS_PORT
-})
-
-connection.connect(function(err){
-            if(err){
-                console.error('Database connection failed: ' + err.stack);
-                return
-            }
-            console.log('Connected to database.');
-        }
-);
- 
-
-// kill connection 
-function killConnection(){
-    console.log("ending database session");
-    connection.end((err) => {
-        if (err){
-            console.log(err);
-        }
-    }); 
-}
-
-
-/* Export the functions */
-module.exports.connection = connection;
-module.exports.killConnection = killConnection; 
-
-=======
     // host: process.env.RDS_HOSTNAME,
     // user: process.env.RDS_USERNAME,
     // password: process.env.RDS_PASSWORD,
@@ -64,7 +31,7 @@ connection.connect(function(err){
     }
     console.log("Connected to the db");
 
-    connection.query("SELECT * FROM userInfo", function (err, result, fields_) {
+    connection.query("SELECT Username, Password FROM userInfo", function (err, result, fields_) {
         if (err) throw err;
         console.log(result);
     });
@@ -97,5 +64,4 @@ connection.connect(function(err){
 // }
 
 /* Export the functions*/
-// module.exports.createConnection = query;
->>>>>>> Stashed changes
+module.exports = connection;
