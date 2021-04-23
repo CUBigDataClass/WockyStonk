@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/dashboardStyles/graphStyle.css';
 import ChartistGraph from 'react-chartist';
-import axios from 'axios';
+//import axios from 'axios';
 class Graph extends React.Component{
     constructor(props){
         super(props);
@@ -24,8 +24,17 @@ class Graph extends React.Component{
                 // }
             },
             type:"Line",
+            
 
         }
+    }
+
+    componentDidMount(){
+        fetch('/data')
+        .then(res => res.json())
+        .then(data => this.setState({series: data},
+            () => console.log("new data fetched " + data)
+        ))
     }
 
 
