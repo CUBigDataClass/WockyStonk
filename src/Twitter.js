@@ -8,24 +8,22 @@ function searchTweets(keyword){
         access_token_secret: 'VFpeSpyZollw4XNmEETCeZ43FL5lD3yYAvtyGZlsaWBag',
     
     });
-    // let arr = [];
-    let link = " ";
+    let embed = " ";
+    let htmlCode = '';
     //taken from https://medium.com/@federicojordn/simplertapp-twitter-search-api-with-node-js-29e4664db299
-    client.get('search/tweets', {q: keyword, count: 1, result_type: 'popular'}, function(error, tweets, response) {
+    client.get('search/tweets', {q: keyword, count: 2, result_type: 'popular'}, function(error, tweets, response) {
         tweets.statuses.forEach(function(tweet){
-            // arr.push({
-            //     link : (tweet.entities.urls[0]["expanded_url"]) // to extract expanded url to create embeded code to display on website
-    
-            // })
-            link = (tweet.entities.urls[0]["expanded_url"]);
-            // 
-            console.log(link)
-            // client.get('statuses/oembed', {url: 'https://twitter.com/Bartonologist/status/1385271362588225539'}, function(error, data, response){
-            //     console.log(data);
-            // });
-            
+            let id = (tweet.id_str) // extracts id of tweet
+            let userName = (tweet.user.screen_name) // extracts username
+
+            embed = `https://twitter.com/${userName}/status/${id}` //link needed for embeded html code
+
+            client.get('statuses/oembed', {url: embed}, function(error, data, response){
+                htmlCode = data.html;
+                
+            });
+            console.log(htmlCode);
         });
-            // console.log(arr);
      });
 }
 searchTweets('#stockmarket')
