@@ -5,7 +5,7 @@ import ChartistGraph from 'react-chartist';
 class Graph extends React.Component{
     constructor(props){
         super(props);
-        console.log(props.props.labels)
+        console.log(props)
         this.state={
             data:{
                 labels: props.props.labels,
@@ -17,23 +17,18 @@ class Graph extends React.Component{
                 high: 10,
                 low: 0,
                 width:600,
-                // axisX: {
-                //   labelInterpolationFnc: function(value, index) {
-                //     return index % 2 === 0 ? value : null; //skips every other label value
-                //   }
-                // }
             },
             type:"Line",
-            
-
         }
+        this.componentDidMount=this.componentDidMount.bind(this);
     }
 
     componentDidMount(){
+ 
         fetch('/data')
         .then(res => res.json())
-        .then(data => this.setState({series: data},
-            () => console.log("new data fetched " + data)
+        .then(newData => this.setState({data: newData},
+            () => console.log("new data fetched " + this.state)
         ))
     }
 

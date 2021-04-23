@@ -40,13 +40,46 @@ let input = '';
 
 app.get('/data', function(req, res) {
     console.log('creating data set');
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
-    });
+    // res.writeHead(200, {
+    //   'Content-Type': 'application/json',
+    // });
     console.log('input:', input);
+    if(input =="appl"){
+        console.log("here")
+        newLables = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday']
+        newSeries = [[1, 2, 3, 4, 5]]
+        data={
+            labels: newLables,
+            series: newSeries,
+            options:{
+                high: 10,
+                low: 0,
+                width:600,
+            },
+            type:"Line",
+        }
+        console.log(data)
+        res.send(data)
+    }
+    else{
+        newLables = ['Wednesday', 'Thursday', 'Friday', 'Monday']
+        newSeries = [[10,4,2,3]]
+        data={
+            labels: newLables,
+            series: newSeries,
+            options:{
+                high: 10,
+                low: 0,
+                width:600,
+            },
+            type:"Line",
+        }
+        console.log(data)
+        res.send(data)
+    }
+
     //res.end(JSON.stringify(input));
-    data = [1,2,3,4,5]
-    res.send(data)
+
 });
 
 

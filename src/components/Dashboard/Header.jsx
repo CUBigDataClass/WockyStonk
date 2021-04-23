@@ -2,14 +2,6 @@ import React from "react";
 import Sidenav from './SideNav';
 import '../styles/dashboardStyles/headerStyle.css';
 import { connect } from "react-redux";
-import axios from "axios";
-
-const axiosConfig = {
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
-    }
-  };
 
 class Header extends React.Component{
     constructor(props){
@@ -19,14 +11,16 @@ class Header extends React.Component{
         }
         this.update=this.update.bind(this);
         this.onChange=this.onChange.bind(this);
+        this.handleKeyDown=this.handleKeyDown.bind(this);
     }
 
 
 
     update = (event) =>{
         //console.log(this.state);
-        event.preventDefault();
-        
+        //event.preventDefault();
+        const word = this.state.search;
+        console.log(word);
         // const searchInput ={
         //     userInput: this.state.search
         // };
@@ -45,23 +39,13 @@ class Header extends React.Component{
         })
         .then((result) => result.json())
         .then((info) => {console.log(info)})
-
-        // axios.post("http://localhost:3030/dashboard", {searchInput})
-        //     .then(res => {
-        //         console.log(res);
-        //         console.log(res.data)
-        //     })
-
-
-        // axios
-        //     .post("http://localhost:3030/dashboard", {searchInput}, axiosConfig)
-        //     .then(() => {
-        //         console.log("Sending data back to server");
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
-
+        
+        this.props.updateSearch(word);
+    }
+    handleKeyDown = (e) => {
+        if(e.key === 'Enter'){
+            this.update();
+        }
     }
 
     onChange = (e) => {
@@ -72,7 +56,7 @@ class Header extends React.Component{
         return(
             <div className="header">
                 <section className="search">
-                    <input className='dashboardInput' type="text"  placeholder="Search" onChange={(e) => this.onChange(e.target.value)} />
+                    <input className='dashboardInput' type="text"  placeholder="Search" onChange={(e) => this.onChange(e.target.value)} onKeyDown={this.handleKeyDown} />
                     
                 </section>
                 <button onClick={this.update}>Search</button>
