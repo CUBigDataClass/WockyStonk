@@ -66,7 +66,7 @@ app.get('/data', function(req, res) {
     let data = {};
     let newSeries = [];
     const newLables = getDays();
-    console.log(newLables)
+    //console.log(newLables)
     if(input){
         let searchQ = input.toUpperCase();
         searchQ = "'"+ searchQ + "'"
@@ -83,7 +83,7 @@ app.get('/data', function(req, res) {
                 }
                 const max = Math.max(...newSeries);
                 const min = Math.min(...newSeries);
-                console.log(newSeries);
+                //console.log(newSeries);
                 //newLables = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday'];
                 let dataSeries = [];
                 dataSeries.push(newSeries);
@@ -113,7 +113,7 @@ app.get('/data', function(req, res) {
                     },
                     type:"Line",
                 }
-                console.log(data)
+                //console.log(data)
                 res.send(data);
             }
             
@@ -132,7 +132,7 @@ app.get('/data', function(req, res) {
             },
             type:"Line",
         }
-        console.log(data)
+        //console.log(data)
         res.send(data);
     }
 
@@ -142,7 +142,7 @@ app.get('/data', function(req, res) {
 
 
 app.post("/data", (req,res) => {
-    console.log("search was " + req.body.search)
+   //console.log("search was " + req.body.search)
     input = req.body.search;
 })
 
