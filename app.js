@@ -93,7 +93,7 @@ app.get('/data', function(req, res) {
                     options:{
                         high: max,
                         low: min,
-                        width:600,
+                        width:800,
                     },
                     type:"Line",
                 }
@@ -109,7 +109,7 @@ app.get('/data', function(req, res) {
                     options:{
                         high: 10,
                         low: 0,
-                        width:600,
+                        width:800,
                     },
                     type:"Line",
                 }
@@ -128,7 +128,7 @@ app.get('/data', function(req, res) {
             options:{
                 high: 10,
                 low: 0,
-                width:600,
+                width:800,
             },
             type:"Line",
         }

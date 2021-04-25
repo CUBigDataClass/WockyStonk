@@ -15,7 +15,7 @@ class Graph extends React.Component{
                 options:{
                     high: 10,
                     low: 0,
-                    width:600,
+                    width:800,
                 },
                 type:"Line",
             }

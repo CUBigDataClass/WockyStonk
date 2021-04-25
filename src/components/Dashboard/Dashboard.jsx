@@ -31,7 +31,7 @@ class Dashboard extends React.Component{
             <div>
                 <Header props={this.props} updateSearch={this.updateSearch}/>
                 <BodyContent/>
-                <Buttons/>
+                {/* <Buttons/> */}
     
             </div>
     
