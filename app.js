@@ -6,8 +6,6 @@ const cors = require('cors');
 console.log(__dirname);
 // Data Modules
 const sql = require(__dirname + '/database/db-handler.js');
-sql.connection;
-//sql.killConnection();
 
 // Router Modules
 const login = require(__dirname + '/routes/loginRouter.js');
@@ -38,15 +36,91 @@ let input = '';
 //     res.json(test);
 // })
 
+function getDays(){
+    var d = new Date();
+    const num = d.getDay();
+    let days;
+    switch(num){
+        case 0||1||6:
+            days = ["Friday", "Thursday", "Wednesday", "Tuesday", "Monday"];
+            break;
+        case 2:
+            days = ["Monday", "Friday", "Thursday", "Wednesday", "Tuesday"];
+            break;
+        case 3:
+            days = ["Tuesday","Monday", "Friday", "Thursday", "Wednesday"];
+            break;
+        case 4:
+            days = ["Wednesday", "Tuesday","Monday", "Friday", "Thursday"];
+            break;
+        case 4:
+            days = ["Thursday", "Wednesday", "Tuesday","Monday", "Friday"];
+            break;
+        default:
+            days = ["Friday", "Thursday", "Wednesday", "Tuesday", "Monday"];
+    }
+    return days;
+}
+
 app.get('/data', function(req, res) {
-    console.log('creating data set');
-    // res.writeHead(200, {
-    //   'Content-Type': 'application/json',
-    // });
-    console.log('input:', input);
-    if(input =="appl"){
-        console.log("here")
-        newLables = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday']
+    let data = {};
+    let newSeries = [];
+    const newLables = getDays();
+    console.log(newLables)
+    if(input){
+        let searchQ = input.toUpperCase();
+        searchQ = "'"+ searchQ + "'"
+        const queryScript  = "SELECT Open FROM tradeDates WHERE symbol = " + searchQ + " LIMIT 5";
+        //console.log(queryScript);
+        sql.query(queryScript, function(err, result, fields){
+            if(err){
+                throw err;
+            }
+            //console.log(result.length);
+            if(result.length>0){
+                for(var i = 0; i < result.length; i++){
+                    newSeries.push(result[i].Open);
+                }
+                const max = Math.max(...newSeries);
+                const min = Math.min(...newSeries);
+                console.log(newSeries);
+                //newLables = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday'];
+                let dataSeries = [];
+                dataSeries.push(newSeries);
+                data={
+                    labels: newLables,
+                    series: dataSeries,
+                    options:{
+                        high: max,
+                        low: min,
+                        width:600,
+                    },
+                    type:"Line",
+                }
+                console.log(data)
+                res.send(data);
+            }
+            else{
+                //newLables = ['Monday', 'Wednesday', 'Thursday', 'Friday', 'Monday']
+                newSeries = [[5,4,3,2,1]]
+                data={
+                    labels: newLables,
+                    series: newSeries,
+                    options:{
+                        high: 10,
+                        low: 0,
+                        width:600,
+                    },
+                    type:"Line",
+                }
+                console.log(data)
+                res.send(data);
+            }
+            
+        })
+    }
+    else{ //default case
+        
         newSeries = [[1, 2, 3, 4, 5]]
         data={
             labels: newLables,
@@ -59,38 +133,17 @@ app.get('/data', function(req, res) {
             type:"Line",
         }
         console.log(data)
-        res.send(data)
-    }
-    else{
-        newLables = ['Wednesday', 'Thursday', 'Friday', 'Monday']
-        newSeries = [[10,4,2,3]]
-        data={
-            labels: newLables,
-            series: newSeries,
-            options:{
-                high: 10,
-                low: 0,
-                width:600,
-            },
-            type:"Line",
-        }
-        console.log(data)
-        res.send(data)
+        res.send(data);
     }
 
-    //res.end(JSON.stringify(input));
+    
 
 });
 
 
 app.post("/data", (req,res) => {
     console.log("search was " + req.body.search)
-    //console.log(req)
-    // const userinput = {
-    //     searchInput: req.body.search,
-    // }
     input = req.body.search;
-    //sql.connection;
 })
 
 

@@ -11,14 +11,15 @@ class Graph extends React.Component{
                 labels: props.props.labels,
                 series: [
                     props.props.series
-                ]
-            },
-            options:{
-                high: 10,
-                low: 0,
-                width:600,
-            },
-            type:"Line",
+                ],
+                options:{
+                    high: 10,
+                    low: 0,
+                    width:600,
+                },
+                type:"Line",
+            }
+
         }
         this.componentDidMount=this.componentDidMount.bind(this);
     }
@@ -27,16 +28,17 @@ class Graph extends React.Component{
  
         fetch('/data')
         .then(res => res.json())
-        .then(newData => this.setState({data: newData},
-            () => console.log("new data fetched " + this.state)
+        .then((data) => this.setState({data},
+            () => console.log("new data fetched " + this.state + data)
         ))
     }
 
 
     render(){
+        console.log(this.state)
         return(
             <div className="graph">
-                <ChartistGraph className={'ct-octave'} data={this.state.data} options={this.state.options} type={this.state.type}></ChartistGraph>
+                <ChartistGraph className={'ct-octave'} data={this.state.data} options={this.state.data.options} type={this.state.data.type}></ChartistGraph>
             </div>
         )
     }
