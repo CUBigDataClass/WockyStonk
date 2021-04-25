@@ -1,15 +1,11 @@
-import React, { setState } from "react";
+import React from "react";
 
 class Ticker extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      increase: true
-    };
   }
 
-  /* Set the color of the percent span based on last price */
+  // get into redux store for the last price, and see if the percent change is negative 
   render() {
     return (
       <div className="box input-text;">
@@ -18,7 +14,7 @@ class Ticker extends React.Component {
           <span className="index"> {this.props.index} </span>
           <span
             style={
-              this.state.increase ? { color: "#00FF00" } : { color: "red" }
+              this.props.change >= 0 ? { color: "#00FF00" } : { color: "red" }
             }
           >
             {this.props.change}%{" "}
