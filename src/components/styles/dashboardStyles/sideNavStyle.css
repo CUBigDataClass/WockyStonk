@@ -1,6 +1,6 @@
 .profile-pic{
     position: relative;
-    left: 6vw;
+    left: 5.5vw;
     border-radius: 50%;
     height: 35%;
     width: 35%; 
@@ -26,12 +26,12 @@ span{
 }
 
 .stonk{
+    display: flex;
+    justify-content: center;
     width: 100%;
-    background-color: blue;
     height: 5vh;
 }
 .filler{
     width: 100%;
-    background-color: red;
     height: 15vh;
 }

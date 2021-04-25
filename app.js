@@ -24,6 +24,9 @@ app.use('/register',register);
 app.use('/dashboard', dashboard);
 
 let input = '';
+let daily = false;
+let weekly = false;
+
 
 
 //Example to get the data from the request
@@ -62,29 +65,87 @@ function getDays(){
     return days;
 }
 
+function getHours(){
+    var d = new Date();
+    console.log(d)
+    const hours = d.getHours();
+    const minutes = d.getMinutes();
+    console.log(hours +"aaaaaaaaaaaaaa"+ minutes)
+    let labels = [];
+    let string="";
+    if (hours <= 16 ){ //between open and close
+        if(hours > 9 || (hours === 9 && minutes > 30)){
+            for (var i = 9; i <= hours; i++){
+                if (i === 9){
+                    labels.push("9:30");
+                }
+                else if(i == hours){
+                    string = i.toString()+":"+"00";
+                    labels.push(string);
+                    if(minutes > 30){
+                        string = i.toString()+":"+"30"; 
+                        labels.push(string)
+                    }
+                }
+                else{
+                    string = i.toString()+":"+"00";
+                    labels.push(string);
+                    string = i.toString()+":"+"30";
+                    labels.push(string);
+                }
+            }
+        }
+        
+    }
+    else{
+        labels.push("9:30");
+        for(var i = 10; i <=16; i++){
+            if(i==16){
+                labels.push("16:00");
+            }
+            else{
+                
+                string = i.toString()+":"+"00";
+                labels.push(string);
+                string = i.toString()+":"+"30";
+                labels.push(string);
+            }
+        }
+    }
+
+    return labels
+}
+
 app.get('/data', function(req, res) {
     let data = {};
     let newSeries = [];
-    const newLables = getDays();
+    let newLables = getDays();
     //console.log(newLables)
+    const lab = getHours();
+    console.log(lab);
     if(input){
         let searchQ = input.toUpperCase();
-        searchQ = "'"+ searchQ + "'"
-        const queryScript  = "SELECT Open FROM tradeDates WHERE symbol = " + searchQ + " LIMIT 5";
+        searchQ = "'"+ searchQ + "'";
+        let limit = 5;
+        if(daily){
+            newLables = getHours()
+            limit = newLables.length;
+        }
+        
+        const queryScript  = "SELECT * FROM tradeDates WHERE symbol = " + searchQ + " LIMIT " + limit;
         //console.log(queryScript);
         sql.query(queryScript, function(err, result, fields){
             if(err){
                 throw err;
             }
-            //console.log(result.length);
+            console.log(result);
             if(result.length>0){
                 for(var i = 0; i < result.length; i++){
-                    newSeries.push(result[i].Open);
+                    newSeries.push(result[i].open);
                 }
                 const max = Math.max(...newSeries);
                 const min = Math.min(...newSeries);
                 //console.log(newSeries);
-                //newLables = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday'];
                 let dataSeries = [];
                 dataSeries.push(newSeries);
                 data={
@@ -97,11 +158,13 @@ app.get('/data', function(req, res) {
                     },
                     type:"Line",
                 }
+                daily = false;
+                weekly = false;
                 console.log(data)
                 res.send(data);
             }
-            else{
-                //newLables = ['Monday', 'Wednesday', 'Thursday', 'Friday', 'Monday']
+            else{ //can't find the stock
+                //newLables = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ]
                 newSeries = [[5,4,3,2,1]]
                 data={
                     labels: newLables,
@@ -113,14 +176,16 @@ app.get('/data', function(req, res) {
                     },
                     type:"Line",
                 }
-                //console.log(data)
+                daily = false;
+                weekly = false;
+                console.log(data)
                 res.send(data);
             }
             
         })
     }
     else{ //default case
-        
+        //newLables = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ]
         newSeries = [[1, 2, 3, 4, 5]]
         data={
             labels: newLables,
@@ -132,7 +197,9 @@ app.get('/data', function(req, res) {
             },
             type:"Line",
         }
-        //console.log(data)
+        daily = false;
+        weekly = false;
+        console.log(data)
         res.send(data);
     }
 
@@ -145,7 +212,13 @@ app.post("/data", (req,res) => {
    //console.log("search was " + req.body.search)
     input = req.body.search;
 })
+app.post("/refreshDaily", (req,res) => {
+    daily = req.body.daily;
+ })
 
+ app.post("/refreshWeekly", (req,res) => {
+    weekly = req.body.weekly;
+ })
 
 
 

@@ -59,7 +59,7 @@ class Header extends React.Component{
                     <input className='dashboardInput' type="text"  placeholder="Search" onChange={(e) => this.onChange(e.target.value)} onKeyDown={this.handleKeyDown} />
                     
                 </section>
-                <button onClick={this.update}>Search</button>
+                <button onKeyDown={this.handleKeyDown} onClick={this.update}>Search</button>
                 <section className="title">
                     <h2> Wocky Stonks</h2>
                 </section>
