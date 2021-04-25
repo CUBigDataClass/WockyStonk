@@ -8,19 +8,19 @@ function refreshIndex() {
         
         const indices = {
                 DOW: {
-                        name: "DOW (default)",
+                        name: "DOW",
                         index: -1, 
                         previousClose: 299, 
                         change: 10
                 }, 
                 NAS: {
-                        name: "NASDAQ (default)",
+                        name: "NASDAQ",
                         index: -11, 
                         previousClose: 300, 
                         change: -2.5
                 },
                 SP: {
-                        name: "S&P500 (default)",
+                        name: "S&P500",
                         index: -111, 
                         previousClose: 300, 
                         change: 1
