@@ -5,6 +5,7 @@ import Buttons from './Buttons'
 import Header from './Header'
 //import Test from './testComponent';
 import data from './data'
+import Footer from '../Footer/Footer'
 
 class Dashboard extends React.Component{
 
@@ -31,7 +32,7 @@ class Dashboard extends React.Component{
             <div>
                 <Header props={this.props} updateSearch={this.updateSearch}/>
                 <BodyContent/>
-                {/* <Buttons/> */}
+                <Footer/>
     
             </div>
     

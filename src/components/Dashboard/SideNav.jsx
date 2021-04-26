@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/dashboardStyles/sideNavStyle.css';
-
+import { useHistory } from "react-router-dom";
 
 
 function SideNav(){
-
+    const history = useHistory();
 
     function handleOpen(){
         var x = document.getElementById('dropdown').style.width;
@@ -16,7 +16,17 @@ function SideNav(){
         }
     }
 
-    const image = "https://s3-alpha-sig.figma.com/img/3084/e5ea/6c827e172f6f9871eb0708e08ee3ba87?Expires=1616371200&Signature=Tq4mA6HZnUKJKRkE0MHMocnHtvs15sviKJ6IUDmpU41gQ2RCzQIEyvn6GSViPZaqtqlP4qG0zKz~b~erTf1aT-Os7ykCs7BLbqR9l8E5OjbcWwm~b0VPoVQOB9NuOyEuyDLUfB~KW5eHKe-Mg6OpXtnQ77RdPeIh13QMryvEsccv57n4q-wfSPwMkuF0-4K5zrHVRNGRg6LEr~-jBEISl3LkE3omzT4891tLm1ABERMqroxVT4MlHvHKb2kRBXkvJ1-OEBgvpizRST5cPyF7CZpSfKdMCG9ryzwZGVWDqra4TQLUNmhdgxEZ7jjU6SsNsy~5gcDNLWq4EXZaZU9H8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
+    async function logOut(event){
+        event.preventDefault();
+        try{
+            history.push("/");
+        }
+        catch(err){
+            throw err;
+        }
+    }
+
+    const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUuC-VE9AlCZKatywv50H0TpGGCAEsvwN-aQ&usqp=CAU";
     return(
         <section className="sideNav">
             <span onClick={handleOpen}>
@@ -25,7 +35,9 @@ function SideNav(){
 
             <section id="dropdown">
                 <section className='filler'> </section>
-                <section className='stonk'></section>
+                <section className='stonk'>
+                    <button onClick={logOut}>Sign Out</button>
+                </section>
             </section>
         </section>
     )
