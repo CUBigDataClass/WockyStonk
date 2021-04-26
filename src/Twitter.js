@@ -8,32 +8,33 @@ function searchTweets(keyword){
         access_token_secret: 'VZ5yi61g8AiUjq0DdiCHiCUkODVzFxLzx6YfP0pf9zlPd',
     });
 
-    let id = "";
-    let userName = "";
-    let embed = " ";
-    let htmlCode = "";
+    // let id = "";
+    // let userName = "";
+    // let embed = " ";
+    // let htmlCode = "";
     //taken from https://medium.com/@federicojordn/simplertapp-twitter-search-api-with-node-js-29e4664db299
-    client.get('search/tweets', {q: keyword, count: 1, result_type: 'popular'}, getUserInfo);
+    client.get('search/tweets', {q: keyword, count: 5, result_type: 'recent', lang: "en"}, getUserInfo);
     function getUserInfo(err,tweets,response){
         if(err){
             console.log(err)
             throw(err)
         }
         tweets.statuses.forEach(function(tweet){
-            id = tweet.id_str 
-            userName = tweet.user.screen_name
+            console.log("Tweet: "+tweet.text)
+            // id = tweet.id_str 
+            // userName = tweet.user.screen_name
         })
-        embed = id + userName;
+        // embed = id + userName;
         // embed = `https://twitter.com/${userName}/status/${id}` //link needed for embeded html code
         //      client.get('statuses/oembed', {url: embed}, function(error, data, response){
          
         //  htmlCode = data.html
         //  console.log(htmlCode)
-        console.log(embed)
-        return embed
+        // console.log(embed)
+        // return embed
     //  }); 
      
     }
 }
-searchTweets("#stockmarket")
-module.exports.searchTweets = searchTweets;
+searchTweets("#AAPL");
+// module.exports.searchTweets = searchTweets;
