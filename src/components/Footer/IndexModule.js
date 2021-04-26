@@ -2,7 +2,7 @@
 
 import { getNodeText } from '@testing-library/react';
 
-const fmp = require('financialmodelingprep')('c494c521ea2b5688b838372418d58fd2')
+const fmp = require('financialmodelingprep')('03f913ffa755f3a7e59358a90a63678b')
 
 function refreshIndex() {
         
