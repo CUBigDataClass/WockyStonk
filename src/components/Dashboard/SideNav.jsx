@@ -26,7 +26,7 @@ function SideNav(){
         }
     }
 
-    const image = "https://media-exp1.licdn.com/dms/image/C4D03AQGd0R7OGpq13Q/profile-displayphoto-shrink_200_200/0/1516245317503?e=1625097600&v=beta&t=RJXr9sp9YfSb-XJdk-hI-sb4XzGcafWnY1BXbTr3Kq4";
+    const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUuC-VE9AlCZKatywv50H0TpGGCAEsvwN-aQ&usqp=CAU";
     return(
         <section className="sideNav">
             <span onClick={handleOpen}>
