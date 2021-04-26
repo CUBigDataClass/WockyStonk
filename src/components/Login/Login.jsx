@@ -40,6 +40,7 @@ function Login(props) {
     axios
       .post("http://localhost:3030/", {credentials}, axiosConfig)
       .then((res) => {
+        console.log(res)
         let found = res.data.isUser; 
         console.log(found);
 
