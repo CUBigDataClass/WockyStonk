@@ -12,7 +12,8 @@ class BodyContent extends React.Component{
                 <Graph props={data}></Graph>
                 <div className = 'socialMedia'>
                     <section className='reddit'>
-                        <SocialMedia></SocialMedia>
+                        <SocialMedia>
+                        </SocialMedia>
                     </section>
                     <section className='twitter'>
                         <SocialMedia></SocialMedia>

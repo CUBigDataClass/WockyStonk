@@ -37,4 +37,4 @@ function searchTweets(keyword){
     }
 }
 searchTweets("#AAPL");
-// module.exports.searchTweets = searchTweets;
+module.exports.searchTweets = searchTweets;
