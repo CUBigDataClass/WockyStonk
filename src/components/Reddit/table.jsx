@@ -13,7 +13,7 @@ function Table(props) {
     const [posts,updatePosts] = useState([]);
 
     useState( async () => {
-        let redditPackage = await Reddit.getRedditPosts(searchedTicker); 
+        let redditPackage = await Reddit.getRedditPosts('wallstreetbets'); 
         updatePosts(redditPackage);
     })
 
