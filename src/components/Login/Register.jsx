@@ -39,11 +39,12 @@ function Login(props) {
         //- Query db here for name, check for valid return
 
         //- If db insertion was successful then push them to dashboard
-        if (success) {
-          history.push('/dashboard', {creds: credentials});
-        } else{
-          console.log("Registration FAILED");
-        }
+        history.push('/');
+        // if (success) {
+        //   history.push('/dashboard', {creds: credentials});
+        // } else{
+        //   console.log("Registration FAILED");
+        // }
       })
       .catch((err) => {
         console.log(err);

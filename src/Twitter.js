@@ -8,10 +8,6 @@ function searchTweets(keyword){
         access_token_secret: 'VZ5yi61g8AiUjq0DdiCHiCUkODVzFxLzx6YfP0pf9zlPd',
     });
 
-    // let id = "";
-    // let userName = "";
-    // let embed = " ";
-    // let htmlCode = "";
     //taken from https://medium.com/@federicojordn/simplertapp-twitter-search-api-with-node-js-29e4664db299
     client.get('search/tweets', {q: keyword, count: 5, result_type: 'recent', lang: "en"}, getUserInfo);
     function getUserInfo(err,tweets,response){
